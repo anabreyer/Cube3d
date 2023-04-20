@@ -1,71 +1,96 @@
 #include "cub3d.h"
 
-void init_image(t_image *image)
-{
-    image->type = 0;
-    image->str = NULL;
-    image->prev = NULL;
-    image->next = NULL;
-}
+// void init_image(t_image *image)
+// {
+//     image->type = 0;
+//     image->addr = NULL;
+// }
 
-void init_texture(t_texture *texture)
+
+int init_texture(t_texture *texture, t_cub *cub)
 {
     int i;
 
+    i = -1;
+    while (++i < 4)
+    {
+        texture->img_path[i] = NULL;
+    }
     i = 0;
-    init_image(texture->image);
     while (i < 3)
     {
-        texture->rgb_f[i] = 0;
-        texture->rgb_c[i] = 0;
+        texture->rgb_f[i] = -1;
+        texture->rgb_c[i] = -1;
         i++;
     }
 }
 
+void init_map(t_map *map, t_cub *cub)
+{
+    map->map = NULL;
+    map->map_x = 0;
+    map->map_y = 0;
+    init_texture(&map->texture, cub);
+}
+
+void init_image(t_image *img, t_cub *cub)
+{
+    img->img = NULL;
+    img->addr = NULL;
+    img->bpp = 0;
+    img->endian = 0;
+    img->size_line = 0;
+}
+
 int init_cub(t_cub *cub, char *str)
 {
-    cub->map = (t_map) * ft_calloc(1, sizeof(t_map));
+    cub->map = ft_calloc(1, sizeof(t_map));
     if (!cub->map)
         print_error("error: init: failed to allocate map", cub);
-    init_map(cub->map);
     cub->mlx = mlx_init();
     if (!cub->mlx)
         print_error("error: init: failed to init mlx", cub);
-    cub->image = (t_image) * malloc(sizeof(t_image));
-    if (!cub->image)
+    cub->img = malloc(sizeof(t_image));
+    if (!cub->img)
         print_error("error: init: failed to allocate image", cub);
-    
-    init_texture();
+    init_image(&cub->img, cub);
+
 }
 
-typedef struct s_image
-{
-    int			type;
-	char		*str;
-    int         img_width;
-    int         img_height;
 
-}               t_image;
 
-typedef struct s_texture
-{
-    t_image     image[4];
-    int         rgb_f[3];
-    int         rgb_c[3];
-}				t_texture;
+// typedef struct s_image
+// {
+//     // mlx_get_data_addr
+//     // mlx_new_image
+//     void        *img;   //img to use  
+// 	char		*addr;
+//     int         bpp;
+//     int         endian; //(0-1) value to choose color in pixel
+//     int         size_line;  //bite to save a line for image in memory
 
-typedef struct s_map
-{
-    int         max_x;
-    int         max_y;
-    char        **map;
-}               t_map;
+// }               t_image;
 
-typedef struct s_cub
-{
-    void        *mlx;
-    void        *win;
-    t_checker   *checker;
-    t_texture   texture;
-    t_map       map;
-}               t_cub;
+// typedef struct s_texture
+// {
+//     char        *img_path[4];
+//     int         rgb_f[3];
+//     int         rgb_c[3];
+// }				t_texture;
+
+// typedef struct s_map
+// {
+//     int         map_x;
+//     int         map_y;
+//     char        **map;
+//     t_texture   *texture;
+// }               t_map;
+
+// typedef struct s_cub
+// {
+//     void        *mlx;
+//     void        *win;
+//     t_checker   *checker;
+//     t_map       *map;
+//     t_image     *img;
+// }               t_cub;

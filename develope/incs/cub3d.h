@@ -13,14 +13,14 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-enum e_texture
-{
-    NO = 1,
-    SO,
-    WE,
-    EA,
-    F,
-    C
-} 
+// enum e_texture
+// {
+//     NO = 1,
+//     SO,
+//     WE,
+//     EA,
+//     F,
+//     C
+// };
 
 #endif

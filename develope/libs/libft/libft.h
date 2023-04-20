@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
+/*   By: aaduan-b <aaduan-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 14:47:40 by ykuo              #+#    #+#             */
-/*   Updated: 2023/01/24 17:11:33 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/04/20 18:51:54 by aaduan-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # include <stdio.h>
 # include <stdarg.h>
 
-# define BUFFER_SIZE 10
+# define BUFFER_SIZE 100
 
 typedef struct s_list
 {

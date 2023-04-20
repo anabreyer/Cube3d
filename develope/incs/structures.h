@@ -45,9 +45,9 @@ typedef struct s_image
 {
     // mlx_get_data_addr
     // mlx_new_image
-    void        *img;   //img to use
-    int			type;   
+    void        *img;   //img to use  
 	char		*addr;
+    int         bpp;
     int         endian; //(0-1) value to choose color in pixel
     int         size_line;  //bite to save a line for image in memory
 
@@ -55,16 +55,17 @@ typedef struct s_image
 
 typedef struct s_texture
 {
-    t_image     image[4];
+    char        *img_path[4];
     int         rgb_f[3];
     int         rgb_c[3];
 }				t_texture;
 
 typedef struct s_map
 {
-    int         max_x;
-    int         max_y;
+    int         map_x;
+    int         map_y;
     char        **map;
+    t_texture   *texture;
 }               t_map;
 
 typedef struct s_cub
@@ -72,8 +73,7 @@ typedef struct s_cub
     void        *mlx;
     void        *win;
     t_checker   *checker;
-    t_texture   *texture;
-    t_map       map;
+    t_map       *map;
     t_image     *img;
 }               t_cub;
 
