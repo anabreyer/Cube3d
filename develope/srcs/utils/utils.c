@@ -1,5 +1,19 @@
 #include "cub3d.h"
 
+int skip_spacei(char *str)
+{
+    while (ft_isspace)
+        i++;
+    return (i);
+}
+
+int ft_isspace(char c)
+{
+    if (c == ' ')
+        return (1);
+    return (0);
+}
+
 int ft_strstr(char *s1, char *s2)
 {
     int i;

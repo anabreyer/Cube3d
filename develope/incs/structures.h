@@ -29,17 +29,10 @@
 // mlx_mouse_hook
 // mlx_expose_hook
 
-
-
-typedef struct s_checker
+typedef struct s_player
 {
-    bool    no;
-    bool    so;
-    bool    we;
-    bool    ea;
-    bool    f;
-    bool    c;
-}               t_checker;
+    int         status;
+}               t_player;
 
 typedef struct s_image
 {
@@ -56,14 +49,16 @@ typedef struct s_image
 typedef struct s_texture
 {
     char        *img_path[4];
+    int         floor;
+    int         ceiling;
     int         rgb_f[3];
     int         rgb_c[3];
 }				t_texture;
 
 typedef struct s_map
 {
-    int         map_x;
-    int         map_y;
+    int         width;
+    int         height;
     char        **map;
     t_texture   *texture;
 }               t_map;
@@ -72,9 +67,9 @@ typedef struct s_cub
 {
     void        *mlx;
     void        *win;
-    t_checker   *checker;
     t_map       *map;
     t_image     *img;
+    t_player    *player;
 }               t_cub;
 
 #endif

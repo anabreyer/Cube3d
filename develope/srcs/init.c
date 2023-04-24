@@ -1,12 +1,5 @@
 #include "cub3d.h"
 
-// void init_image(t_image *image)
-// {
-//     image->type = 0;
-//     image->addr = NULL;
-// }
-
-
 int init_texture(t_texture *texture, t_cub *cub)
 {
     int i;
@@ -23,13 +16,15 @@ int init_texture(t_texture *texture, t_cub *cub)
         texture->rgb_c[i] = -1;
         i++;
     }
+    texture->floor = 0;
+    texture->ceiling = 0;
 }
 
 void init_map(t_map *map, t_cub *cub)
 {
     map->map = NULL;
-    map->map_x = 0;
-    map->map_y = 0;
+    map->width = 0;
+    map->height = 0;
     init_texture(&map->texture, cub);
 }
 
@@ -40,6 +35,11 @@ void init_image(t_image *img, t_cub *cub)
     img->bpp = 0;
     img->endian = 0;
     img->size_line = 0;
+}
+
+void init_player(t_player *player, t_cub *cub)
+{
+    player->status = 0;
 }
 
 int init_cub(t_cub *cub, char *str)
@@ -54,6 +54,10 @@ int init_cub(t_cub *cub, char *str)
     if (!cub->img)
         print_error("error: init: failed to allocate image", cub);
     init_image(&cub->img, cub);
+    cub->player = malloc(sizeof(t_player));
+    if (!cub->player)
+        print_error("error: init: failed to allocate player", cub);
+    init_player(&cub->player, cub);
 
 }
 
