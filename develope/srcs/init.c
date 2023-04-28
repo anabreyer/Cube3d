@@ -1,5 +1,8 @@
 #include "cub3d.h"
 
+
+//test~~~~~~~~~~~~~~~~~~~~~~~~!!!!
+
 int init_texture(t_texture *texture, t_cub *cub)
 {
     int i;
