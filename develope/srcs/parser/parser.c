@@ -81,6 +81,7 @@ int file_parser(t_cub *cub, char *filename)
     if (fd == -1)
         print_error("cannot open file", cub);
     init_map(&cub->map, cub);
+    cub->player.status = 0;
     while (42)
     {
         line = get_next_line(fd);

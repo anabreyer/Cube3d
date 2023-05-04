@@ -39,10 +39,10 @@ void init_image(t_image *img, t_cub *cub)
     img->size_line = 0;
 }
 
-void init_player(t_player *player, t_cub *cub)
-{
-    player->status = 0;
-}
+// void init_player(t_player *player, t_cub *cub)
+// {
+//     player->status = 0;
+// }
 
 // int init_cub(t_cub *cub, char *str)
 // {
