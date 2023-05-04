@@ -21,4 +21,10 @@ void    init_map(t_map *map, t_cub *cub);
 int     init_cub(t_cub *cub, char *str);
 int     main(int argc, char *argv[]);
 
+/* DISPLAY */
+int display(t_cub *cub);
+int create_window(t_cub *cub, t_map *map);
+int go_hooking(t_cub *cub);
+int	closebutton(t_cub *cub);
+
 #endif

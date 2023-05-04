@@ -7,6 +7,7 @@ DIRMLX		= ./minilibx-linux/
 DIRINIT		= ./init/
 DIRUTIL		= ./utils/
 DIRPARS		= ./parser/
+DIRDIS		= ./display/
 # DIRREND		= ./rendering/
 HEAD		= ./incs/
 
@@ -18,9 +19,12 @@ SRC_UTILS	= utils/utils.c
 
 SRC_INIT	= init/init.c
 
+SRC_DIS		= display/display.c
+
 SRCS		= $(SRC_PARSER)
 SRCS		+= $(SRC_UTILS)
 SRCS		+= $(SRC_INIT)
+SRCS		+= $(SRC_DIS)
 SRCS		+= main.c
 ALLSRCS		= $(addprefix $(DIRSRC), $(SRCS))
 
