@@ -16,11 +16,12 @@ static int	cut_line(char *line)
 {
 	int	i;
 
-	i = -1;
-	while (line && line[++i])
+	i = 0;
+	while (line && line[i])
 	{
 		if (line[i] == 10)
 			return (i + 1);
+		i++;
 	}
 	return (0);
 }

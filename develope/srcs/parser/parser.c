@@ -1,25 +1,5 @@
 #include "cub3d.h"
 
-    // bool    no;
-    // bool    so;
-    // bool    we;
-    // bool    ea;
-    // bool    f;
-    // bool    c;
-
-// int set_pstatus(char c)
-// {
-//     if (c == 'N')
-//         return (N);
-//     else if (c == 'S')
-//         return (S);
-//     else if (c == 'E')
-//         return (E);
-//     else if (c == 'W')
-//         return (W);
-//     return (0);
-// }
-
 void    check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
 {
     int i;
@@ -42,7 +22,7 @@ void    check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
     }
     if (map->width < i)
         map->width = i;
-    if (map->start = 0)
+    if (map->start == 0)
         map->start = map->mcount;
 }
 
@@ -76,6 +56,7 @@ int file_parser(t_cub *cub, char *filename)
 {
     char *line;
     int fd;
+    int i;
 
     fd = open(filename, O_RDONLY);
     if (fd == -1)
@@ -87,6 +68,11 @@ int file_parser(t_cub *cub, char *filename)
         line = get_next_line(fd);
         if (!line)
             break;
+        i = -1;
+        while (line && line[++i])
+            if (line[i] == '\n')
+                line[i] = '\0';
+        // printf("file_parser line : %s\n", line);
         cub->map.mcount++;
         if (file_check(&cub->map, &cub->player, line, cub))
             print_error("wrong data in map file", cub);
@@ -96,7 +82,6 @@ int file_parser(t_cub *cub, char *filename)
     dup_map(cub, filename);
     close(fd);
     return (0);
-    //open and read by gnl line by line, search NO, SO ... in line, another check functions to skip whitespace and check is it valide file.
 }
 
 int check_extension(char *filename)
