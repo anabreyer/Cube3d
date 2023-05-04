@@ -7,18 +7,18 @@
     // bool    f;
     // bool    c;
 
-int set_pstatus(char c)
-{
-    if (c == 'N')
-        return (N);
-    else if (c == 'S')
-        return (S);
-    else if (c == 'E')
-        return (E);
-    else if (c == 'W')
-        return (W);
-    return (0);
-}
+// int set_pstatus(char c)
+// {
+//     if (c == 'N')
+//         return (N);
+//     else if (c == 'S')
+//         return (S);
+//     else if (c == 'E')
+//         return (E);
+//     else if (c == 'W')
+//         return (W);
+//     return (0);
+// }
 
 void    check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
 {
@@ -36,10 +36,14 @@ void    check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
         {
             if(player->status != 0)
                 print_error("more than one players on the map", cub);
-            player->status = set_pstatus(c);
+            player->status = c;
         }
         i++;
     }
+    if (map->width < i)
+        map->width = i;
+    if (map->start = 0)
+        map->start = map->mcount;
 }
 
 int file_check(t_map *map, t_player *player, char *line, t_cub *cub)
@@ -58,9 +62,9 @@ int file_check(t_map *map, t_player *player, char *line, t_cub *cub)
         i++;
     if (line[i] == '0' || line[i] == '1')
     {
-        if (!map->texture->img_path[0] || !map->texture->img_path[1] \
-            || !map->texture->img_path[2] || !map->texture->img_path[3]\
-            || map->texture->rgb_c[0] == -1 || map->texture->rgb_f[0] == -1)
+        if (!map->texture.img_path[0] || !map->texture.img_path[1] \
+            || !map->texture.img_path[2] || !map->texture.img_path[3]\
+            || map->texture.rgb_c[0] == -1 || map->texture.rgb_f[0] == -1)
             print_error("something missing or wrong order data in the file", cub);
         else
             check_mapsyntax(map, player, line, cub);
@@ -82,6 +86,7 @@ int file_parser(t_cub *cub, char *filename)
         line = get_next_line(fd);
         if (!line)
             break;
+        cub->map.mcount++;
         if (file_check(&cub->map, &cub->player, line, cub))
             print_error("wrong data in map file", cub);
         free(line);   

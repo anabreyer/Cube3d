@@ -1,43 +1,70 @@
+DIRSRC		= ./srcs/
+DIRINC		= ./incs/
+DIROBJ		= ./objs/
+DIRLIB		= ./libft/
+DIRMLX		= ./minilibx-linux/
+# DIRBMP		= ./libbmp/
+DIRINIT		= ./init/
+DIRUTIL		= ./utils/
+DIRPARS		= ./parser/
+# DIRREND		= ./rendering/
+HEAD		= ./incs/
+
+SRC_PARSER	= parser/check_data.c\
+				parser/parser.c\
+				parser/dup_map.c
+
+SRC_UTILS	= utils/utils.c
+
+SRC_INIT	= init/init.c
+
+SRCS		= $(SRC_PARSER)
+SRCS		+= $(SRC_UTILS)
+SRCS		+= $(SRC_INIT)
+SRCS		+= main.c
+ALLSRCS		= $(addprefix $(DIRSRC), $(SRCS))
+
+SAN 		= -fsanitize=leak
+
+OBJS		= $(ALLSRCS:.c=.o)
+
+NAME		= Cub3D
+NAMELFT		= libft.a
+NAMEMLX		= libmlx.a
+# NAMEBMP		= libbmp.a
+
 CC			= gcc
-CFLAGS		= -Wextra -Wall -Werror -g3
-MLX_LINUX_FLAGS	= -lm -lX11 -lXext
-NAME		= so_long
+RM			= rm -f
 
-MLX_PATH	= ./minilibx-linux/
-MLX			= $(MLX_PATH)libmlx.a
+CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext
 
-SRC_PATH 	= srcs/
-OBJ_PATH 	= obj/
+.c.o:
+			${CC} ${CFLAGS} -c -I${DIRINC} -I${DIRMLX} -I${DIRLIB} $< -o ${<:.c=.o}
 
-SRC			= main.c
+$(NAME):	${OBJS}
+			cd ${DIRLIB} && ${MAKE}
+			cd ${DIRMLX} && ${MAKE}
+			${CC} -o ${NAME} -I${DIRINC} -I${DIRMLX} ${OBJS} -L${DIRLIB} -L${DIRMLX} ${CFLAGS}
 
-SRCS	= $(addprefix $(SRC_PATH), $(SRC))
-OBJ		= $(SRC:.c=.o)
-OBJS	= $(addprefix $(OBJ_PATH), $(OBJ))
-INCS	= -I ./incs/
+main:		$(NAME)
+			${CC} ${NAME} main.c
 
-all: $(OBJ_PATH) $(NAME)
-
-$(OBJ_PATH)%.o: $(SRC_PATH)%.c
-	$(CC) $(CFLAGS) -c $< -o $@ $(INCS)
-
-$(OBJ_PATH):
-	mkdir $(OBJ_PATH)
-
-$(NAME): $(LIBFT) $(MLX) $(OBJ_PATH) $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(LIBFT) $(MLX) $(MLX_LINUX_FLAGS) -o $(NAME)
-
-
-$(MLX):
-	make -C $(MLX_PATH)
+all:		$(NAME)
 
 clean:
-	make -C $(MLX_PATH) clean
-	rm -rf $(OBJ_PATH)
+			${RM} ${OBJS}
 
-fclean: clean
-	rm -f $(NAME)
+fclean:		clean
+			${RM} $(NAME)
 
-re: fclean all
+ffclean:	fclean
+			cd ${DIRLIB} && ${MAKE} fclean
+			cd ${DIRMLX} && ${MAKE} clean
 
-.PHONY: all clean fclean re
+ext:
+			cd ${DIRLIB} && ${MAKE} re
+			cd ${DIRMLX} && ${MAKE} re
+
+re:			fclean all
+
+.PHONY:		all clean fclean re

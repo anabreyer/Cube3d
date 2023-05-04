@@ -1,0 +1,13 @@
+[] map extecsion check
+[] map keywords check
+[] texture file open check
+[] wall opened check
+[] player check on the map
+[] rgb check
+
+start game
+[] create window
+[] keyhook
+[] minimap
+[] pixel -> image
+[] raycasting 

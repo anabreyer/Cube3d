@@ -59,17 +59,19 @@ typedef struct s_map
 {
     int         width;
     int         height;
+    int         start;
+    int         mcount;
     char        **map;
-    t_texture   *texture;
+    t_texture   texture;
 }               t_map;
 
 typedef struct s_cub
 {
     void        *mlx;
     void        *win;
-    t_map       *map;
-    t_image     *img;
-    t_player    *player;
+    t_map       map;
+    t_image     img;
+    t_player    player;
 }               t_cub;
 
 #endif

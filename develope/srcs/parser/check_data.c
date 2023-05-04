@@ -7,8 +7,10 @@ char *get_path(char *line, t_cub *cub)
 
     p = line;
     p += 2;
+    printf("CURRENT P: %s", p);
     while (ft_isspace(*p))
         p++;
+    printf("CURRENT P: %s", p);
     fd = open(p, O_RDONLY);
     if (fd < 0)
         print_error("cannot open texture image file", cub);
@@ -23,14 +25,14 @@ int check_path(t_map *map, char *line, t_cub *cub)
     path = get_path(line, cub);
     if (!path)
         return (1);
-    if (line[0] == 'N' && map->texture->img_path[0] == NULL)
-        map->texture->img_path[0] = path;
-    else if (line[0] == 'S' && map->texture->img_path[1] == NULL)
-        map->texture->img_path[1] = path;
-    else if (line[0] == 'W' && map->texture->img_path[2] == NULL)
-        map->texture->img_path[2] = path;
-    else if (line[0] == 'E' && map->texture->img_path[3] == NULL)
-        map->texture->img_path[3] = path;
+    if (line[0] == 'N' && map->texture.img_path[0] == NULL)
+        map->texture.img_path[0] = path;
+    else if (line[0] == 'S' && map->texture.img_path[1] == NULL)
+        map->texture.img_path[1] = path;
+    else if (line[0] == 'W' && map->texture.img_path[2] == NULL)
+        map->texture.img_path[2] = path;
+    else if (line[0] == 'E' && map->texture.img_path[3] == NULL)
+        map->texture.img_path[3] = path;
     else
         print_error("double keyword for the texture file", cub);
     return (0);
@@ -51,6 +53,7 @@ int check_range_and_set(char *line, t_map *map, t_cub *cub)
             while (ft_isdigit(line[i]))
                 i++;
         }
+        //put in the structure
     }
 }
 
@@ -70,7 +73,7 @@ int    check_syntax_rgb(char *line, t_map *map, t_cub *cub)
             comma++;
         if (!(ft_isspace(line[i]) || ft_isdigit(line[i]) || line[i] == ','))
             print_error("found non-numeric for rgb", cub);
-        if (!ft_digit(line[i]) && ft_digit(line[i + 1]))
+        if (!ft_isdigit(line[i]) && ft_isdigit(line[i + 1]))
             count++;
         i++;
     }
@@ -78,16 +81,6 @@ int    check_syntax_rgb(char *line, t_map *map, t_cub *cub)
         return (1);
     return (check_range_and_set(line, map, cub));
 }
-
-            
-            else
-                return (1);
-            i += skip_spacei(line + i);
-            if (line[i] == ',' && comma += (line[i] == ','))
-                i++;
-            else if (line[i])
-                return (0);
-
 
 int check_color(t_map *map, char *line, char key, t_cub *cub)
 {
@@ -97,8 +90,9 @@ int check_color(t_map *map, char *line, char key, t_cub *cub)
     line += 2;
     while (ft_isspace(*line))
         line++;
-    ret = check_syntax_rgb(line, cub);
+    ret = check_syntax_rgb(line, map, cub);
 
-    if (key == 'C')
-    map->texture->rgb_c = rgb_split(line, ',');
+    // if (key == 'C')
+    // map->texture->rgb_c = rgb_split(line, ',');
+    return (ret);
 }
