@@ -13,14 +13,19 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-// enum e_texture
-// {
-//     NO = 1,
-//     SO,
-//     WE,
-//     EA,
-//     F,
-//     C
-// };
+# define WWIDTH 1280
+# define WHEIGHT 960
+// 1280:720 (16:9)
+// 1280:960 (4:3)
+
+enum e_texture
+{
+    NO = 1,
+    SO,
+    WE,
+    EA
+    // F,
+    // C
+};
 
 #endif
