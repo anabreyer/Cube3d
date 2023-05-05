@@ -1,33 +1,46 @@
 #include "cub3d.h"
 
-int init_texture(t_texture *texture, t_cub *cub)
-{
-    int i;
+// int init_texture(t_texture *texture, t_cub *cub)
+// {
+//     int i;
 
-    i = -1;
-    while (++i < 4)
-    {
-        texture->img_path[i] = NULL;
-    }
-    i = 0;
-    while (i < 3)
-    {
-        texture->rgb_f[i] = -1;
-        texture->rgb_c[i] = -1;
-        i++;
-    }
-    texture->floor = 0;
-    texture->ceiling = 0;
-}
+//     i = 0;
+//     while (i < 4)
+//     {
+//         texture->img_path[i++] = NULL;
+//     }
+//     i = 0;
+//     while (i < 3)
+//     {
+//         texture->rgb_f[i] = -1;
+//         texture->rgb_c[i] = -1;
+//         i++;
+//     }
+//     texture->floor = 0;
+//     texture->ceiling = 0;
+// }
 
 void init_map(t_map *map, t_cub *cub)
 {
+    int i;
+
     map->map = NULL;
     map->width = 0;
     map->height = 0;
     map->mcount = 0;
     map->start = 0;
-    init_texture(&map->texture, cub);
+    i = 0;
+    while (i < 4)
+        map->img_path[i++] = NULL;
+    i = 0;
+    while (i < 3)
+    {
+        map->rgb_c[i] = -1;
+        map->rgb_f[i] = -1;
+        i++;
+    }
+    map->floor = 0;
+    map->ceiling = 0;
 }
 
 void init_image(t_image *img, t_cub *cub)
