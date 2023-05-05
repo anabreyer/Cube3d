@@ -16,8 +16,7 @@ int main(int argc, char *argv[])
     {
         if (!file_parser(&cub, argv[1]))
         {
-            // routine_start(&cub);
-            display(&cub);
+            routine(&cub);
         }
             return (1);
     }
