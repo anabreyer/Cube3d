@@ -35,16 +35,16 @@ int file_check(t_map *map, t_player *player, char *line, t_cub *cub)
     ret = 0;
     if (!ft_strncmp("NO ", line, 3) || !ft_strncmp("SO ", line, 3)\
         || !ft_strncmp("WE ", line, 3) || !ft_strncmp("EA ", line, 3))
-        ret = check_path(map, line, cub);
+        ret = check_path(line, cub);
     else if (!ft_strncmp("F ", line, 2) || !ft_strncmp("C ", line, 2))
-        ret = check_color(map, line, line[0], cub);
+        ret = check_color(line, line[0], cub);
     while (ft_isspace(line[i]))
         i++;
     if (line[i] == '0' || line[i] == '1')
     {
-        if (!map->texture.img_path[0] || !map->texture.img_path[1] \
-            || !map->texture.img_path[2] || !map->texture.img_path[3]\
-            || map->texture.rgb_c[0] == -1 || map->texture.rgb_f[0] == -1)
+        if (!map->img_path[0] || !map->img_path[1] \
+            || !map->img_path[2] || !map->img_path[3]\
+            || map->rgb_c[0] == -1 || map->rgb_f[0] == -1)
             print_error("something missing or wrong order data in the file", cub);
         else
             check_mapsyntax(map, player, line, cub);
@@ -79,6 +79,9 @@ int file_parser(t_cub *cub, char *filename)
         free(line);   
         line = NULL;     
     }
+    i = 0;
+    while (i < 4)
+        printf("PRINT_AFTER_ASSIGN: %s \n",cub->map.img_path[i++]);
     dup_map(cub, filename);
     close(fd);
     return (0);

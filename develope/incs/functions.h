@@ -11,20 +11,23 @@ void    print_error(char *msg, t_cub *cub);
 
 /* PARSER */
 int     check_extension(char *filename);
-int     check_path(t_map *map, char *line, t_cub *cub);
+int     check_path(char *line, t_cub *cub);
 int     file_parser(t_cub *cub, char *filename);
-int     check_color(t_map *map, char *line, char key, t_cub *cub);
+int     check_color(char *line, char key, t_cub *cub);
 void    dup_map(t_cub *cub, char *filename);
 
 /* INIT */
 void    init_map(t_map *map, t_cub *cub);
 int     init_cub(t_cub *cub, char *str);
-int     main(int argc, char *argv[]);
+void    init_image(t_image *img, t_cub *cub);
 
 /* DISPLAY */
 int display(t_cub *cub);
-int create_window(t_cub *cub, t_map *map);
+int create_window(t_cub *cub);
 int go_hooking(t_cub *cub);
 int	closebutton(t_cub *cub);
+
+/* MAIN */
+int     main(int argc, char *argv[]);
 
 #endif

@@ -16,27 +16,40 @@ char *get_path(char *line, t_cub *cub)
     return (p);
 }
 
-int check_path(t_map *map, char *line, t_cub *cub)
+int check_path(char *line, t_cub *cub)
 {
     char *path;
 
+printf("chaeck_path: line: %s\n", line);
     path = get_path(line, cub);
+    printf("PATH: check_PATH: %s\n", path);
     if (!path)
         return (1);
-    if (line[0] == 'N' && map->texture.img_path[0] == NULL)
-        map->texture.img_path[0] = path;
-    else if (line[0] == 'S' && map->texture.img_path[1] == NULL)
-        map->texture.img_path[1] = path;
-    else if (line[0] == 'W' && map->texture.img_path[2] == NULL)
-        map->texture.img_path[2] = path;
-    else if (line[0] == 'E' && map->texture.img_path[3] == NULL)
-        map->texture.img_path[3] = path;
+    if (line[0] == 'N' && cub->map.img_path[0] == NULL)
+    {   cub->map.img_path[0] = ft_strdup(path);
+        printf("GOTIN?_[N]: %s \n",cub->map.img_path[0]);
+    }
+    else if (line[0] == 'S' && cub->map.img_path[1] == NULL)
+    {
+        cub->map.img_path[1] = ft_strdup(path);
+        printf("GOTIN?_[S]: %s \n",cub->map.img_path[1]);
+    }
+    else if (line[0] == 'W' && cub->map.img_path[2] == NULL)
+    {
+        cub->map.img_path[2] = ft_strdup(path);
+        printf("GOTIN?_[W]: %s \n",cub->map.img_path[2]);
+    }
+    else if (line[0] == 'E' && cub->map.img_path[3] == NULL)
+    {
+        cub->map.img_path[3] = ft_strdup(path);
+        printf("GOTIN?_[E]: %s \n",cub->map.img_path[3]);
+    }
     else
         print_error("double keyword for the texture file", cub);
     return (0);
 }
 
-int check_range(char *line, t_map *map)
+int check_range(char *line)
 {
     int i;
 
@@ -56,7 +69,7 @@ int check_range(char *line, t_map *map)
     return (0);
 }
 
-int    check_syntax_rgb(char *line, t_map *map, t_cub *cub)
+int    check_syntax_rgb(char *line, t_cub *cub)
 {
     int i;
     int comma;
@@ -77,7 +90,7 @@ int    check_syntax_rgb(char *line, t_map *map, t_cub *cub)
     }
     if (comma != 2 || count > 3)
         return (1);
-    return (check_range(line, map));
+    return (check_range(line));
 }
 
 void    rgb_split(char *line, int rgb[3], char sep)
@@ -96,7 +109,7 @@ void    rgb_split(char *line, int rgb[3], char sep)
     }
 }
 
-int check_color(t_map *map, char *line, char key, t_cub *cub)
+int check_color(char *line, char key, t_cub *cub)
 {
     int ret;
     int i;
@@ -105,12 +118,12 @@ int check_color(t_map *map, char *line, char key, t_cub *cub)
     line += 2;
     while (ft_isspace(*line))
         line++;
-    if(check_syntax_rgb(line, map, cub))
+    if(check_syntax_rgb(line, cub))
         print_error("rgb range error: (0-255)", cub);
     i = 0;
     if (key == 'C')
-        rgb_split(line, map->texture.rgb_c, ',');
+        rgb_split(line, cub->map.rgb_c, ',');
     else if (key == 'F')
-        rgb_split(line, map->texture.rgb_f, ',');
+        rgb_split(line, cub->map.rgb_f, ',');
     return (ret);
 }
