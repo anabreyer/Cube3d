@@ -14,8 +14,9 @@ int main(int argc, char *argv[])
     }
     else if (argc == 2 && !check_extension(argv[1]))
     {
-        if (file_parser(&cub, argv[1]))
+        if (!file_parser(&cub, argv[1]))
         {
+            // routine_start(&cub);
             display(&cub);
         }
             return (1);

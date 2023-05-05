@@ -1,16 +1,10 @@
 #include "cub3d.h"
 
-int display(t_cub *cub)
+int	closebutton(t_cub *cub)
 {
-    create_window(cub, &cub->map);
-    go_hooking(cub);
-}
-
-int create_window(t_cub *cub, t_map *map)
-{
-    cub->mlx = mlx_init();
-    cub->win = mlx_new_window(cub->mlx, map->width, map->height, "Cube3D");
-    return (0);
+	mlx_destroy_image(cub->mlx, cub->img.img);
+	exit (0);
+	return (0);
 }
 
 int go_hooking(t_cub *cub)
@@ -20,9 +14,44 @@ int go_hooking(t_cub *cub)
     return(0);
 }
 
-int	closebutton(t_cub *cub)
+void    create_image(t_cub *cub)
 {
-	mlx_destroy_image(cub->mlx, cub->img.img);
-	exit (0);
-	return (0);
+    int     i;
+    char    *path;
+
+    i = 0;
+    while (i < 4)
+    {
+        path = cub->map.img_path[i];
+        printf("path: %s\n", path);
+        cub->img.img = mlx_xpm_file_to_image(cub->mlx, path, &cub->img.width, &cub->img.height);
+        // wood.xpm: 64 * 64
+        printf("cub->img.width : %d  \n", cub->img.width);
+        if (cub->img.width != 64 || cub->img.height != 64 || !cub->img.img)
+            print_error("error: create_image: load xpm file to image got an error", cub);
+        cub->img.addr = (int *)mlx_get_data_addr(cub->img.img, &cub->img.bpp, &cub->img.size_line, &cub->img.endian);
+        // When I assign addr value as char* is has segfault, But I don't know why
+        printf("addr : i: %d %ls\n", i, cub->img.addr);
+        // mlx_destroy_image(cub->mlx, cub->img.img);
+        i++;
+    }
+}
+
+int create_window(t_cub *cub)
+{
+    cub->mlx = mlx_init();
+    if (!cub->mlx)
+        print_error("error: create_window: failed to init mlx", cub);
+    cub->win = mlx_new_window(cub->mlx, WWIDTH, WHEIGHT, "Cub3D");
+    if (!cub->win)
+        print_error("error: create_window: failed to create window", cub);
+    return (0);
+}
+
+int display(t_cub *cub)
+{
+    create_window(cub);
+    init_image(&cub->img, cub);
+    create_image(cub);
+    go_hooking(cub);
 }

@@ -8,7 +8,6 @@ DIRINIT		= ./init/
 DIRUTIL		= ./utils/
 DIRPARS		= ./parser/
 DIRDIS		= ./display/
-# DIRREND		= ./rendering/
 HEAD		= ./incs/
 
 SRC_PARSER	= parser/check_data.c\
