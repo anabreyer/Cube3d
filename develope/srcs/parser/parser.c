@@ -1,5 +1,17 @@
 #include "cub3d.h"
 
+int set_status(char dir)
+{
+    if (dir == 'N')
+        return (NO);
+    else if (dir == 'S')
+        return (SO);
+    else if (dir == 'W')
+        return (WE);
+    else if (dir == 'E')
+        return (EA);
+}
+
 void    check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
 {
     int i;
@@ -16,7 +28,7 @@ void    check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
         {
             if(player->status != 0)
                 print_error("more than one players on the map", cub);
-            player->status = c;
+            player->status = set_status(c);
         }
         i++;
     }

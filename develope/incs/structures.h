@@ -4,6 +4,8 @@
 
 #include "cub3d.h"
 
+# define WWIDTH 1280
+# define WHEIGHT 960
 
 // mlx_new_window
 // mlx_clear_window
@@ -34,6 +36,12 @@
 typedef struct s_player
 {
     int         status;
+    double      pos_x;
+    double      pos_y;
+    double      dir_x;
+    double      dir_y;
+    double      plane_x;
+    double      plane_y;
 }               t_player;
 
 typedef struct s_image
@@ -41,7 +49,9 @@ typedef struct s_image
     // mlx_get_data_addr
     // mlx_new_image
     void        *img;
-	int		*addr;
+	int		    *addr;
+    int         **img_arr;
+    int         buffer[WHEIGHT][WWIDTH];
     int         bpp;
     int         endian; //(0-1) value to choose color in pixel
     int         size_line;  //bite to save a line for image in memory
