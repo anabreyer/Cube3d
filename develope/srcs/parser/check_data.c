@@ -20,29 +20,23 @@ int check_path(char *line, t_cub *cub)
 {
     char *path;
 
-printf("chaeck_path: line: %s\n", line);
     path = get_path(line, cub);
-    printf("PATH: check_PATH: %s\n", path);
     if (!path)
         return (1);
     if (line[0] == 'N' && cub->map.img_path[0] == NULL)
     {   cub->map.img_path[0] = ft_strdup(path);
-        printf("GOTIN?_[N]: %s \n",cub->map.img_path[0]);
     }
     else if (line[0] == 'S' && cub->map.img_path[1] == NULL)
     {
         cub->map.img_path[1] = ft_strdup(path);
-        printf("GOTIN?_[S]: %s \n",cub->map.img_path[1]);
     }
     else if (line[0] == 'W' && cub->map.img_path[2] == NULL)
     {
         cub->map.img_path[2] = ft_strdup(path);
-        printf("GOTIN?_[W]: %s \n",cub->map.img_path[2]);
     }
     else if (line[0] == 'E' && cub->map.img_path[3] == NULL)
     {
         cub->map.img_path[3] = ft_strdup(path);
-        printf("GOTIN?_[E]: %s \n",cub->map.img_path[3]);
     }
     else
         print_error("double keyword for the texture file", cub);

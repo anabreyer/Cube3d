@@ -15,8 +15,11 @@ void ft_free_img(t_cub *cub)
     i = 0;
     if (cub->mlx != NULL)
     {
-        mlx_destroy_image(cub->mlx, cub->img.addr);
+        mlx_destroy_image(cub->mlx, cub->img.img);
         mlx_destroy_window(cub->mlx, cub->win);
-        
+        while (i < 4)
+        {
+            mlx_destroy_image(cub->mlx, cub->img.img_arr[i]);
+        }
     }
 }

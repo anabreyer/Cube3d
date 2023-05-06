@@ -14,6 +14,27 @@ int go_hooking(t_cub *cub)
     return(0);
 }
 
+void    set_img_arr(t_cub *cub, int i)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (y < cub->img.height)
+    {
+        x = 0;
+        while (x < cub->img.width)
+        {
+            cub->img.img_arr[i][cub->img.width * y + x] = cub->img.addr[cub->img.height * y + x];
+            // printf("%d ", cub->img.img_arr[i][cub->img.width * y + x]);
+            // printf("x: %d\n", x);
+            x++;
+        }
+        // printf("y: %d\n", y);
+        y++;
+    }
+}
+
 void    create_image(t_cub *cub)
 {
     int     i;
@@ -32,6 +53,7 @@ void    create_image(t_cub *cub)
         cub->img.addr = (int *)mlx_get_data_addr(cub->img.img, &cub->img.bpp, &cub->img.size_line, &cub->img.endian);
         // When I assign addr value as char* is has segfault, But I don't know why
         printf("addr : i: %d %ls\n", i, cub->img.addr);
+        set_img_arr(cub, i);
         // mlx_destroy_image(cub->mlx, cub->img.img);
         i++;
     }
@@ -46,12 +68,4 @@ int create_window(t_cub *cub)
     if (!cub->win)
         print_error("error: create_window: failed to create window", cub);
     return (0);
-}
-
-int display(t_cub *cub)
-{
-    create_window(cub);
-    init_image(&cub->img, cub);
-    create_image(cub);
-    go_hooking(cub);
 }

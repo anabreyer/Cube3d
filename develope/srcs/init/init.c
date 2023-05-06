@@ -1,24 +1,6 @@
 #include "cub3d.h"
 
-// int init_texture(t_texture *texture, t_cub *cub)
-// {
-//     int i;
 
-//     i = 0;
-//     while (i < 4)
-//     {
-//         texture->img_path[i++] = NULL;
-//     }
-//     i = 0;
-//     while (i < 3)
-//     {
-//         texture->rgb_f[i] = -1;
-//         texture->rgb_c[i] = -1;
-//         i++;
-//     }
-//     texture->floor = 0;
-//     texture->ceiling = 0;
-// }
 
 void init_map(t_map *map, t_cub *cub)
 {
@@ -43,19 +25,69 @@ void init_map(t_map *map, t_cub *cub)
     map->ceiling = 0;
 }
 
+void    init_img_sub(t_image *img, t_cub *cub)
+{
+    int i;
+    int j;
+
+    i = 0;
+    while (i < WHEIGHT)
+    {
+        j = 0;
+        while (j < WWIDTH)
+            img->buffer[i][j++] = 0;
+        i++;
+    }
+    img->img_arr = (int **)malloc(4 * sizeof(int *));
+    if (!img->img_arr)
+        print_error("error: init_img_sub: img_arr malloc failed", cub);
+    i = 0;
+    while (i < 4)
+    {
+        img->img_arr[i] = (int *)malloc(sizeof(int) * 64 * 64);
+        if (!img->img_arr[i])
+            print_error("error: init_img_sub: img_arr malloc2 failed", cub);
+        ft_memset(img->img_arr[i], 0, (sizeof(int) * 64 * 64));
+        i++;
+    }
+}
+
 void init_image(t_image *img, t_cub *cub)
 {
     img->img = NULL;
     img->addr = NULL;
+    img->img_arr = NULL;
     img->bpp = 0;
     img->endian = 0;
     img->size_line = 0;
+    init_img_sub(img, cub);
 }
 
-// void init_player(t_player *player, t_cub *cub)
-// {
-//     player->status = 0;
-// }
+void init_player(t_player *player)
+{
+    player->dir_x = 0;
+    player->dir_y = 0;
+    if (player->status == NO)
+    {
+        player->dir_y = -1;
+        player->plane_x = 0.66;
+    }
+    else if (player->status == SO)
+    {
+        player->dir_y = 1;
+        player->plane_x = -0.66;
+    }
+    else if (player->status == NO)
+    {
+        player->dir_y = -1;
+        player->plane_x = -0.66;
+    }
+    else if (player->status == NO)
+    {
+        player->dir_y = 1;
+        player->plane_x = 0.66;
+    }
+}
 
 // int init_cub(t_cub *cub, char *str)
 // {
