@@ -51,11 +51,11 @@ typedef struct s_image
 
 // typedef struct s_texture
 // {
-//     char        *img_path[4];
-//     int         floor;
-//     int         ceiling;
-//     int         rgb_f[3];
-//     int         rgb_c[3];
+//     void        *tex;
+//     int         bbd;
+//     int         size_line;
+//     int         width;
+//     int         height;
 // }				t_texture;
 
 typedef struct s_map
