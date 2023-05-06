@@ -5,7 +5,7 @@
 #include "cub3d.h"
 
 # define WWIDTH 1280
-# define WHEIGHT 960
+# define WHEIGHT 720
 
 // mlx_new_window
 // mlx_clear_window
