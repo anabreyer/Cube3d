@@ -25,6 +25,7 @@ void    init_image(t_image *img, t_cub *cub);
 /* PLAY */
 int     routine(t_cub *cub);
 int     create_window(t_cub *cub);
+void    create_image(t_cub *cub);
 int     go_hooking(t_cub *cub);
 int     closebutton(t_cub *cub);
 
