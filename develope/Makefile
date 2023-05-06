@@ -20,7 +20,8 @@ SRC_UTILS	= utils/utils.c
 SRC_INIT	= init/init.c
 
 SRC_PLAY	= play/display.c\
-				play/routine.c
+				play/routine.c\
+				play/keyboard.c
 
 SRC_FREE	= free/freeandexit.c
 

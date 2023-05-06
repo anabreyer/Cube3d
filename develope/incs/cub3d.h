@@ -17,6 +17,14 @@
 # define WHEIGHT 720
 # define COLOUR_MAP_WALL 0x000000
 # define COLOUR_MAP_FLOOR 0xff0000
+# define ESC 65307
+# define W 199
+# define S 115
+# define D 100
+# define A 97
+# define RIGHT 65363
+# define LEFT 65361
+
 // 1280:720 (16:9)
 // 1280:960 (4:3)
 

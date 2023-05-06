@@ -6,7 +6,7 @@ void print_error(char *msg, t_cub *cub)
     ft_putstr_fd("\n", 2);
     ft_putstr_fd("Error\n", 2);
     (void *)cub;
-    exit(1);
+    freeandexit(cub);
 }
 
 int skip_spacei(char *str)
