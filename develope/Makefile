@@ -8,6 +8,7 @@ DIRINIT		= ./init/
 DIRUTIL		= ./utils/
 DIRPARS		= ./parser/
 DIRPLAY		= ./play/
+DIRFREE		= ./free/
 HEAD		= ./incs/
 
 SRC_PARSER	= parser/check_data.c\
@@ -21,10 +22,13 @@ SRC_INIT	= init/init.c
 SRC_PLAY	= play/display.c\
 				play/routine.c
 
+SRC_FREE	= free/freeandexit.c
+
 SRCS		= $(SRC_PARSER)
 SRCS		+= $(SRC_UTILS)
 SRCS		+= $(SRC_INIT)
 SRCS		+= $(SRC_PLAY)
+SRCS		+= $(SRC_FREE)
 SRCS		+= main.c
 ALLSRCS		= $(addprefix $(DIRSRC), $(SRCS))
 

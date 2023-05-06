@@ -1,12 +1,5 @@
 #include "cub3d.h"
 
-int	closebutton(t_cub *cub)
-{
-	mlx_destroy_image(cub->mlx, cub->img.img);
-	exit (0);
-	return (0);
-}
-
 int go_hooking(t_cub *cub)
 {
     mlx_hook(cub->win, 33, 1L << 17, closebutton, cub);
