@@ -23,6 +23,7 @@ void init_map(t_map *map, t_cub *cub)
     }
     map->floor = 0;
     map->ceiling = 0;
+    map->minimap = 1;
 }
 
 void    init_img_sub(t_image *img, t_cub *cub)

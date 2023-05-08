@@ -21,7 +21,8 @@ SRC_INIT	= init/init.c
 
 SRC_PLAY	= play/display.c\
 				play/routine.c\
-				play/keyboard.c
+				play/keyboard.c\
+				play/minimap.c
 
 SRC_FREE	= free/freeandexit.c
 

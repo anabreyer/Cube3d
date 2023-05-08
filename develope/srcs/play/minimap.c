@@ -1,11 +1,16 @@
 #include "cub3d.h"
 
-int ft_put_pixel(t_image *img, unsigned int colour, int p_x, int p_y)
+int ft_put_pixel(t_image *img, unsigned int colour, int x, int y)
 {
-    if (p_y >= img->height || p_x >= img->width || p_x < 0\
-     || p_y < 0 || ((p_y * img->width + p_x) >= (img->width * img->height - 1)))
+    char *dest;
+
+    if (y >= img->height || x >= img->width || x < 0\
+     || y < 0 || ((y * img->width + x) >= (img->width * img->height - 1)))
         return (53);
-    img->addr[p_y * img->width + p_x] = colour;
+
+    // dest = img->addr + (y * img->width + x * (img->bpp / 8));
+    // *(unsigned int *)dest = colour;
+    img->addr[y * img->width + x] = colour;
     return (0);
 }
 
@@ -18,7 +23,7 @@ void draw_square(t_cub *cub, int x, int y, int colour)
 
     i = x;
     j = y;
-    height = 6;
+    height = MINIMAP_SIZE;
     width = height;
     while (i < width + x)
     {
@@ -50,8 +55,21 @@ void init_minimap(t_cub *cub)
     int colour;
     int offset_x;
 
-    // if (!cub->minimap)
-    //     return ;
-    // offset_x = cub
+    if (!cub->map.minimap)
+        return ;
+    offset_x = cub->map.width / 2- (ft_strlen(cub->map.map[0]) * MINIMAP_SIZE) / 2;
+    i = 0;
+    while (i < cub->map.height)
+    {
+        j = 0;
+        while (cub->map.map[i][j] != '\0')
+        {
+            colour = get_colour_minimap(&cub->map, i, j);
+            draw_square(cub, i * MINIMAP_SIZE, offset_x + j * MINIMAP_SIZE, colour);
+            j++;
+        }
+        i++;
+    }
+    //draw_square(cub, )
 }
 

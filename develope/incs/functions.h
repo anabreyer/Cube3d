@@ -28,6 +28,8 @@ int     create_window(t_cub *cub);
 void    create_image(t_cub *cub);
 int     go_hooking(t_cub *cub);
 int     keyboard(int keycode, t_cub *cub);
+void    init_minimap(t_cub *cub);
+
 
 /* FREE */
 int     closebutton(t_cub *cub);

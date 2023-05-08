@@ -17,7 +17,7 @@ int	freeandexit(t_cub *cub)
         free(cub->mlx);
     }
     freemap(cub);
-    free_img_arr(cub);
+    // free_img_arr(cub); //seg fault
     exit(0);
 }
 

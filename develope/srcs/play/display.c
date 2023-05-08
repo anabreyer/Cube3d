@@ -3,7 +3,7 @@
 int go_hooking(t_cub *cub)
 {
     mlx_hook(cub->win, 2, 1L, keyboard,cub);
-    mlx_hook(cub->win, 33, 1L << 17, closebutton, cub);
+    mlx_hook(cub->win, 17, 1L << 17, closebutton, cub);
     mlx_loop(cub->mlx);
     return(0);
 }
