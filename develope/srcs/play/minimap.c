@@ -5,7 +5,7 @@ int ft_put_pixel(t_image *img, unsigned int colour, int p_x, int p_y)
     if (p_y >= img->height || p_x >= img->width || p_x < 0\
      || p_y < 0 || ((p_y * img->width + p_x) >= (img->width * img->height - 1)))
         return (53);
-    img->addr[p_y * img->width + p_x] = colour;
+    img->data[p_y * img->width + p_x] = colour;
     return (0);
 }
 

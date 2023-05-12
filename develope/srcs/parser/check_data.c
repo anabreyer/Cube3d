@@ -116,8 +116,14 @@ int check_color(char *line, char key, t_cub *cub)
         print_error("rgb range error: (0-255)", cub);
     i = 0;
     if (key == 'C')
+    {
         rgb_split(line, cub->map.rgb_c, ',');
+        cub->map.ceiling = (cub->map.rgb_c[0] << 16 | cub->map.rgb_c[1] << 8 | cub->map.rgb_c[2]);
+    }
     else if (key == 'F')
+    {
         rgb_split(line, cub->map.rgb_f, ',');
+        cub->map.floor = (cub->map.rgb_f[0] << 16 | cub->map.rgb_f[1] << 8 | cub->map.rgb_f[2]);
+    }
     return (ret);
 }

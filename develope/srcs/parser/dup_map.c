@@ -71,6 +71,44 @@ void    read_til_start(int fd, t_cub *cub)
     }
 }
 
+void    print_map(char **map)
+{
+    int i;
+
+    i = 0;
+    printf("==============MAP PRINTING==============\n");
+    while (map[i])
+    {
+        printf("%s\n", map[i++]);
+    }
+    printf("==============MAP PRINTING==============\n");
+
+}
+
+void    set_player_pos(t_player *player, char **map)
+{
+    int x;
+    int y;
+
+    y = 0;
+    while (map[y])
+    {
+        x = 0;
+        while (map[y][x])
+        {
+            if (map[y][x] == 'N' || map[y][x] == 'S'\
+                || map[y][x] == 'E' || map[y][x] == 'W')
+            {
+                player->pos_y = y + 0.5;
+                player->pos_x = x + 0.5;
+                map[y][x] = '0';
+            }
+            x++;
+        }
+        y++;
+    }
+}
+
 void    dup_map(t_cub *cub, char *filename)
 {
     char **tmp;
@@ -90,6 +128,7 @@ void    dup_map(t_cub *cub, char *filename)
     read_til_start(fd, cub);
     read_set_map(fd, cub, tmp);
     tmp[cub->map.height] = 0;
+    // print_map(tmp);
     cub->map.map = tmp;
     for (int i = 0; i < 14; i++)
         printf("map[%2d] : %s\n", i, cub->map.map[i]);
@@ -97,5 +136,6 @@ void    dup_map(t_cub *cub, char *filename)
         print_error("map error: opened wall", cub);
     else
         printf("map is ready\n");
+    set_player_pos(&cub->player, cub->map.map);
     close(fd);
 }

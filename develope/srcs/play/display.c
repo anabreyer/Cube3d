@@ -1,19 +1,5 @@
 #include "cub3d.h"
 
-int	closebutton(t_cub *cub)
-{
-	mlx_destroy_image(cub->mlx, cub->img.img);
-	exit (0);
-	return (0);
-}
-
-int go_hooking(t_cub *cub)
-{
-    mlx_hook(cub->win, 33, 1L << 17, closebutton, cub);
-    mlx_loop(cub->mlx);
-    return(0);
-}
-
 void    set_img_arr(t_cub *cub, int i)
 {
     int x;
@@ -25,7 +11,7 @@ void    set_img_arr(t_cub *cub, int i)
         x = 0;
         while (x < cub->img.width)
         {
-            cub->img.img_arr[i][cub->img.width * y + x] = cub->img.addr[cub->img.height * y + x];
+            cub->img.img_arr[i][cub->img.width * y + x] = cub->img.data[cub->img.height * y + x];
             // printf("%d ", cub->img.img_arr[i][cub->img.width * y + x]);
             // printf("x: %d\n", x);
             x++;
@@ -50,11 +36,11 @@ void    create_image(t_cub *cub)
         printf("cub->img.width : %d  \n", cub->img.width);
         if (cub->img.width != 64 || cub->img.height != 64 || !cub->img.img)
             print_error("error: create_image: load xpm file to image got an error", cub);
-        cub->img.addr = (int *)mlx_get_data_addr(cub->img.img, &cub->img.bpp, &cub->img.size_line, &cub->img.endian);
-        // When I assign addr value as char* is has segfault, But I don't know why
-        printf("addr : i: %d %ls\n", i, cub->img.addr);
+        cub->img.data = (int *)mlx_get_data_addr(cub->img.img, &cub->img.bpp, &cub->img.size_line, &cub->img.endian);
+        // When I assign data value as char* is has segfault, But I don't know why
+        printf("data : i: %d %ls\n", i, cub->img.data);
         set_img_arr(cub, i);
-        // mlx_destroy_image(cub->mlx, cub->img.img);
+        mlx_destroy_image(cub->mlx, cub->img.img);
         i++;
     }
 }

@@ -17,12 +17,17 @@ int     check_color(char *line, char key, t_cub *cub);
 void    dup_map(t_cub *cub, char *filename);
 
 /* INIT */
+void    init_ray(t_cub *cub, int x);
 void    init_player(t_player *player);
 void    init_map(t_map *map, t_cub *cub);
 int     init_cub(t_cub *cub, char *str);
 void    init_image(t_image *img, t_cub *cub);
 
 /* PLAY */
+int loop_game(t_cub *cub);
+void    draw_image(t_cub *cub);
+void    paint_floor_ceiling(t_cub *cub);
+void    raycasting(t_cub *cub);
 int     routine(t_cub *cub);
 int     create_window(t_cub *cub);
 void    create_image(t_cub *cub);

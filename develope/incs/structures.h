@@ -49,24 +49,37 @@ typedef struct s_image
     // mlx_get_data_addr
     // mlx_new_image
     void        *img;
-	int		    *addr;
+	int		    *data;      // return address of the created image by mlx_get_data_addr
     int         **img_arr;
     int         buffer[WHEIGHT][WWIDTH];
-    int         bpp;
-    int         endian; //(0-1) value to choose color in pixel
+    int         bpp;        // bits_per_pixel: number of bits to express the color of the pixel
+    int         endian;     //(0-1) value to choose color in pixel
     int         size_line;  //bite to save a line for image in memory
     int         width;
     int         height;
 }               t_image;
 
-// typedef struct s_texture
-// {
-//     void        *tex;
-//     int         bbd;
-//     int         size_line;
-//     int         width;
-//     int         height;
-// }				t_texture;
+typedef struct s_raycasting
+{
+    int         map_x;          // the box of the map we're in
+    int         map_y;
+    double      sideDist_x;     // length of ray from current position to next x or y-side
+    double      sideDist_y;
+    double      deltaDist_x;    // length of ray from one x or y-side to next x or y-side
+    double      deltaDist_y;
+    double      rayDir_x;
+    double      rayDir_y;
+    double      perpWallDist;
+    int         step_x;         // direction to step in x or y-direction (either +1 or -1): (stepX = 1 ↗ & stepX = -1 ↖)
+    int         step_y;         // (stepY = 1 ↘ & stepX = -1 ↗)
+    int         side;           // was a NS or EW wall hit
+    int         line_height;
+    int         startPoint;
+    int         endPoint;
+    int         texture_x;
+    int         texture_y;
+    double      ratio;
+}               t_raycasting;
 
 typedef struct s_map
 {
@@ -84,11 +97,12 @@ typedef struct s_map
 
 typedef struct s_cub
 {
-    void        *mlx;
-    void        *win;
-    t_map       map;
-    t_image     img;
-    t_player    player;
+    void            *mlx;
+    void            *win;
+    t_map           map;
+    t_image         img;
+    t_player        player;
+    t_raycasting    ray;
 }               t_cub;
 
 #endif
