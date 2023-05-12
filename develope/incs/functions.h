@@ -32,7 +32,13 @@ int     routine(t_cub *cub);
 int     create_window(t_cub *cub);
 void    create_image(t_cub *cub);
 int     go_hooking(t_cub *cub);
+int     keyboard(int keycode, t_cub *cub);
+
+/* FREE */
 int     closebutton(t_cub *cub);
+int     freeandexit(t_cub *cub);
+int     freemap(t_cub *cub);
+int     free_img_arr(t_cub *cub);
 
 /* MAIN */
 int     main(int argc, char *argv[]);

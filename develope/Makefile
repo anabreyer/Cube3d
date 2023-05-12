@@ -8,6 +8,7 @@ DIRINIT		= ./init/
 DIRUTIL		= ./utils/
 DIRPARS		= ./parser/
 DIRPLAY		= ./play/
+DIRFREE		= ./free/
 HEAD		= ./incs/
 
 SRC_PARSER	= parser/check_data.c\
@@ -21,16 +22,20 @@ SRC_INIT	= init/init.c
 SRC_PLAY	= play/display.c\
 				play/routine.c\
 				play/keypress_hook.c\
-				play/paint_draw.c
+				play/paint_draw.c\
+				play/keyboard.c\
+				play/minimap.c
 
 SRC_RAY		= raycasting/raycasting.c
 
+SRC_FREE	= free/freeandexit.c
 
 SRCS		= $(SRC_PARSER)
 SRCS		+= $(SRC_UTILS)
 SRCS		+= $(SRC_INIT)
 SRCS		+= $(SRC_PLAY)
 SRCS		+= $(SRC_RAY)
+SRCS		+= $(SRC_FREE)
 SRCS		+= main.c
 ALLSRCS		= $(addprefix $(DIRSRC), $(SRCS))
 

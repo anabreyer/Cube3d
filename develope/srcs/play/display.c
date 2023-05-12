@@ -1,5 +1,13 @@
 #include "cub3d.h"
 
+// int go_hooking(t_cub *cub)
+// {
+//     mlx_hook(cub->win, 2, 1L, keyboard,cub);
+//     mlx_hook(cub->win, 33, 1L << 17, closebutton, cub);
+//     mlx_loop(cub->mlx);
+//     return(0);
+// }
+
 void    set_img_arr(t_cub *cub, int i)
 {
     int x;
