@@ -6,7 +6,7 @@ int ft_put_pixel(t_image *img, unsigned int colour, int x, int y)
 
     if (y >= img->height || x >= img->width || x < 0\
      || y < 0 || ((y * img->width + x) >= (img->width * img->height - 1)))
-        return (53);
+        return (1);
 
     // dest = img->addr + (y * img->width + x * (img->bpp / 8));
     // *(unsigned int *)dest = colour;
@@ -57,7 +57,7 @@ void init_minimap(t_cub *cub)
 
     if (!cub->map.minimap)
         return ;
-    offset_x = cub->map.width / 2- (ft_strlen(cub->map.map[0]) * MINIMAP_SIZE) / 2;
+    offset_x = cub->map.width / 2 - (ft_strlen(cub->map.map[0]) * MINIMAP_SIZE) / 2;
     i = 0;
     while (i < cub->map.height)
     {
