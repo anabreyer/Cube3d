@@ -42,6 +42,8 @@ typedef struct s_player
     double      dir_y;
     double      plane_x;
     double      plane_y;
+    double      speed_move;
+    double      speed_rotate;
 }               t_player;
 
 typedef struct s_image
@@ -96,6 +98,14 @@ typedef struct s_map
     int         minimap;
 }               t_map;
 
+typedef struct s_key
+{
+    int w;
+    int s;
+    int a;
+    int d;
+}               t_key;
+
 typedef struct s_cub
 {
     void            *mlx;
@@ -104,6 +114,7 @@ typedef struct s_cub
     t_image         img;
     t_player        player;
     t_raycasting    ray;
+    t_key           key;
 }               t_cub;
 
 #endif

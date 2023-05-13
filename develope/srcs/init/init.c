@@ -1,5 +1,13 @@
 #include "cub3d.h"
 
+void    init_key(t_key *key)
+{
+    key->w = 0;
+    key->s = 0;
+    key->a = 0;
+    key->d = 0;
+}
+
 void    init_sideDist(t_raycasting *ray, t_player *player)
 {
     if (ray->rayDir_x < 0)
@@ -35,7 +43,7 @@ void    init_ray(t_cub *cub, int x)
     cub->ray.rayDir_y = cub->player.dir_y + cub->player.plane_y * camera;
     cub->ray.map_x = (int)cub->player.pos_x;
     cub->ray.map_y = (int)cub->player.pos_y;
-    printf("\n======> PLAYER pos_X: %d, pox_Y: %d\n\n", (int)cub->player.pos_x, (int)cub->player.pos_y);
+    // printf("\n======> PLAYER pos_X: %d, pox_Y: %d\n\n", (int)cub->player.pos_x, (int)cub->player.pos_y);
                                                             // simplified fomula to get deltaDistX,Y : deltaDistX = abs(1 / rayDirX)
     cub->ray.deltaDist_x = fabs(1 / cub->ray.rayDir_x);     // fabs: function to get an absolute value of real numbers  abs: for integar
     cub->ray.deltaDist_y = fabs(1 / cub->ray.rayDir_y);
@@ -128,4 +136,6 @@ void init_player(t_player *player)
         player->dir_x = 1;
         player->plane_y = 0.66;
     }
+    player->speed_move = 0.05;
+    player->speed_rotate = 0.05;
 }

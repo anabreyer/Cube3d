@@ -17,12 +17,13 @@
 # define WHEIGHT 720
 # define COLOUR_MAP_WALL 0x000000
 # define COLOUR_MAP_FLOOR 0xffffff
-#define MINIMAP_SIZE 6
+# define MINIMAP_SIZE 6
 # define ESC 65307
-# define W 199
+// followed by x11 linux keycode
+# define W 119
 # define S 115
-# define D 100
-# define A 97
+# define D 97
+# define A 100
 # define RIGHT 65363
 # define LEFT 65361
 

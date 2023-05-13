@@ -21,13 +21,15 @@ SRC_INIT	= init/init.c
 
 SRC_PLAY	= play/display.c\
 				play/routine.c\
-				play/keypress_hook.c\
 				play/paint_draw.c\
-				play/keyboard.c
 
 SRC_RAY		= raycasting/raycasting.c
 
 SRC_FREE	= free/freeandexit.c
+
+SRC_KEY		= key_control/keyboard.c\
+				key_control/key_action.c\
+				key_control/move.c
 
 SRC_BONUS	= minimap/minimap.c
 
@@ -37,6 +39,7 @@ SRCS		+= $(SRC_INIT)
 SRCS		+= $(SRC_PLAY)
 SRCS		+= $(SRC_RAY)
 SRCS		+= $(SRC_FREE)
+SRCS		+= $(SRC_KEY)
 SRCS		+= $(SRC_BONUS)
 SRCS		+= main.c
 ALLSRCS		= $(addprefix $(DIRSRC), $(SRCS))
