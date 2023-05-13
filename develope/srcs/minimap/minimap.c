@@ -4,13 +4,12 @@ int ft_put_pixel(t_image *img, unsigned int colour, int x, int y)
 {
     char *dest;
 
-    if (y >= img->height || x >= img->width || x < 0\
-     || y < 0 || ((y * img->width + x) >= (img->width * img->height - 1)))
+    y += 15;
+    x += 70;
+    if (y >= WHEIGHT || x >= WWIDTH || x < 0\
+     || y < 0 || ((y * WWIDTH + x) >= (WWIDTH * WHEIGHT - 1)))
         return (1);
-
-    // dest = img->addr + (y * img->width + x * (img->bpp / 8));
-    // *(unsigned int *)dest = colour;
-    img->addr[y * img->width + x] = colour;
+    img->data[y * WWIDTH + x] = colour;
     return (0);
 }
 

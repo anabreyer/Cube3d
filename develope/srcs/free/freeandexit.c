@@ -51,12 +51,12 @@ int	free_img_arr(t_cub *cub)
 	return (0);
 }
 
-int	closebutton(t_cub *cub)
-{
-	mlx_destroy_image(cub->mlx, cub->img.img);
-	exit (0);
-	return (0);
-}
+// int	closebutton(t_cub *cub)
+// {
+// 	mlx_destroy_image(cub->mlx, cub->img.img);
+// 	exit (0);
+// 	return (0);
+// }
 
 //free cub->map.map
 // free cub->img.img_arr

@@ -21,16 +21,23 @@ SRC_INIT	= init/init.c
 
 SRC_PLAY	= play/display.c\
 				play/routine.c\
-				play/keyboard.c\
-				play/minimap.c
+				play/keypress_hook.c\
+				play/paint_draw.c\
+				play/keyboard.c
+
+SRC_RAY		= raycasting/raycasting.c
 
 SRC_FREE	= free/freeandexit.c
+
+SRC_BONUS	= minimap/minimap.c
 
 SRCS		= $(SRC_PARSER)
 SRCS		+= $(SRC_UTILS)
 SRCS		+= $(SRC_INIT)
 SRCS		+= $(SRC_PLAY)
+SRCS		+= $(SRC_RAY)
 SRCS		+= $(SRC_FREE)
+SRCS		+= $(SRC_BONUS)
 SRCS		+= main.c
 ALLSRCS		= $(addprefix $(DIRSRC), $(SRCS))
 
@@ -46,7 +53,7 @@ NAMEMLX		= libmlx.a
 CC			= gcc
 RM			= rm -f
 
-CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext
+CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext -g
 
 .c.o:
 			${CC} ${CFLAGS} -c -I${DIRINC} -I${DIRMLX} -I${DIRLIB} $< -o ${<:.c=.o}
