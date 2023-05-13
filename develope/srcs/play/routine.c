@@ -6,8 +6,8 @@ int routine(t_cub *cub)
     init_image(&cub->img, cub);
     create_image(cub);
     init_player(&cub->player);
-    
-    // cub->img.img = mlx_new_image(cub->mlx, WWIDTH, WHEIGHT);
-    // cub->img.data = (int *)mlx_get_data_data(cub->img.img, &cub->img.bpp, &cub->img.size_line, &cub->img.endian);
+    // init_minimap(cub);
+    // mlx_put_image_to_window(cub->mlx,
+	// 	cub->win, cub->img.img, 0, 0);
     // go_hooking(cub);
 }

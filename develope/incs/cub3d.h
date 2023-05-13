@@ -16,7 +16,8 @@
 # define WWIDTH 1280
 # define WHEIGHT 720
 # define COLOUR_MAP_WALL 0x000000
-# define COLOUR_MAP_FLOOR 0xff0000
+# define COLOUR_MAP_FLOOR 0xffffff
+#define MINIMAP_SIZE 6
 # define ESC 65307
 # define W 199
 # define S 115

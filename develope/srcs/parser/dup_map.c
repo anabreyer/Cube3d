@@ -128,7 +128,6 @@ void    dup_map(t_cub *cub, char *filename)
     read_til_start(fd, cub);
     read_set_map(fd, cub, tmp);
     tmp[cub->map.height] = 0;
-    // print_map(tmp);
     cub->map.map = tmp;
     for (int i = 0; i < 14; i++)
         printf("map[%2d] : %s\n", i, cub->map.map[i]);
@@ -137,5 +136,6 @@ void    dup_map(t_cub *cub, char *filename)
     else
         printf("map is ready\n");
     set_player_pos(&cub->player, cub->map.map);
+    print_map(cub->map.map);
     close(fd);
 }

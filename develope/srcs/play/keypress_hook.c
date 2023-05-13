@@ -25,9 +25,8 @@ int	closebutton(t_cub *cub)
 int loop_game(t_cub *cub)
 {
     paint_floor_ceiling(cub);
-        draw_image(cub);
     raycasting(cub);
-    // draw_image(cub);
+    draw_image(cub);
     // key_act_hooking(cub);   // the actual action by key hooking start
 }
 

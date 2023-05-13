@@ -93,6 +93,7 @@ typedef struct s_map
     int         ceiling;
     int         rgb_f[3];
     int         rgb_c[3];
+    int         minimap;
 }               t_map;
 
 typedef struct s_cub

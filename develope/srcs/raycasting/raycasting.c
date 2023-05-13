@@ -20,8 +20,6 @@ void    calculate_dda(t_raycasting *ray, t_map *map, t_player *player)
             ray->map_y += ray->step_y;              // map_x : which wall among x-side walls
             ray->side = 1;
         }
-        printf("step_x : %d   step_y : %d\n\n", ray->step_x, ray->step_y);
-        printf("map_x : %d   map_y : %d\n\n", ray->map_x, ray->map_y);
         if (map->map[ray->map_y][ray->map_x] == '1')
             hit = 1;
     }
@@ -119,16 +117,10 @@ void    verLine(t_cub *cub, int x, int y1, int y2, int color)
     }
 }
 
-void    base_setting(t_raycasting *ray, t_cub *cub)
+void    paint_untextured_wall(t_raycasting *ray, t_cub *cub, int x)
 {
-
     int color;
-    int x;
 
-    x = 0;
-    while (x < WWIDTH)
-    {
-    // color = 204 << 16 | 255 << 8 | 204;
     ray->line_height = (int)WHEIGHT / ray->perpWallDist;
 
     ray->startPoint = WHEIGHT / 2 - ray->line_height / 2;
@@ -138,42 +130,16 @@ void    base_setting(t_raycasting *ray, t_cub *cub)
     if (ray->endPoint >= WHEIGHT)
         ray->endPoint = WHEIGHT - 1;
 
-
     if (cub->map.map[ray->map_y][ray->map_x] == '1')
-        color = 0xFF0000;
-    else
-        color = 0x123145;
+        color = 0x894a87;
+    // else
+    //     color = 0xbfff00;
     if (ray->side == 1)
-    {
-        printf("1\n");
         color = color / 2;
-    }
-    
+
     verLine(cub, x, ray->startPoint, ray->endPoint, color);
-    x++;
-    }
-    // if (ray->side == 1)
-    //     color /= 2;
-    //     // color = 204 << 16 | 255 << 8 | 204;
-    // // else
-    //     // color = 102 << 16 | 204 << 8 | 204;
-
-    // int x;
-    // int y;
-
-    // x = 0;
-    // while (x < WWIDTH)
-    // {
-    //     y = 0;
-    //     while (y < WHEIGHT)
-    //     {
-    //         mlx_pixel_put(cub->mlx, cub->win, x, y, color);
-    //         // verLine(x, ray->startPoint, ray->endPoint, color);
-    //         y++;
-    //     }
-    //     x++;
-    // }
 }
+
 
 void    raycasting(t_cub *cub)
 {
@@ -184,9 +150,8 @@ void    raycasting(t_cub *cub)
     {
         init_ray(cub, x);
         calculate_dda(&cub->ray, &cub->map, &cub->player);
-        base_setting(&cub->ray, cub);
-        // set_buffer_base(&cub->ray, &cub->player);
-        // set_buffer_color(&cub->ray, &cub->img, x);
+        paint_untextured_wall(&cub->ray, cub, x);
+        
         x++;
     }
 }

@@ -8,9 +8,10 @@ void    paint_floor_ceiling(t_cub *cub)
     int ceiling;
 
     y = 0;
-    floor = cub->map.floor;
-    // floor = 0x008080;
-    ceiling = cub->map.ceiling;
+    // floor = cub->map.floor;
+    floor = 0x000080;
+    // ceiling = cub->map.ceiling;
+    ceiling = 0xdc0077;
     while (y < WHEIGHT / 2)
     {
         x = 0;
@@ -40,5 +41,6 @@ void    draw_image(t_cub *cub)
         }
         y++;
     }
+    init_minimap(cub);
     mlx_put_image_to_window(cub->mlx, cub->win, cub->img.img, 0, 0);
 }
