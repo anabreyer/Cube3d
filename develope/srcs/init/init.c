@@ -6,6 +6,8 @@ void    init_key(t_key *key)
     key->s = 0;
     key->a = 0;
     key->d = 0;
+    key->turn_l = 0;
+    key->turn_r = 0;
 }
 
 void    init_sideDist(t_raycasting *ray, t_player *player)
@@ -136,6 +138,6 @@ void init_player(t_player *player)
         player->dir_x = 1;
         player->plane_y = 0.66;
     }
-    player->speed_move = 0.05;
+    player->speed_move = 0.06;
     player->speed_rotate = 0.05;
 }

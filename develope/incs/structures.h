@@ -104,6 +104,8 @@ typedef struct s_key
     int s;
     int a;
     int d;
+    int turn_l;
+    int turn_r;
 }               t_key;
 
 typedef struct s_cub

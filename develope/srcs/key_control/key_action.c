@@ -24,6 +24,10 @@ int key_act_hooking(t_cub *cub)
         move_a(&cub->player, &cub->map);
     if (cub->key.d && !cub->key.a)
         move_d(&cub->player, &cub->map);
+    if (cub->key.turn_l && !cub->key.turn_r)
+        turn_l(&cub->player, &cub->map);
+    if (cub->key.turn_r && !cub->key.turn_l)
+        turn_r(&cub->player, &cub->map);
     return (0);
 }
 
@@ -55,6 +59,10 @@ int key_press(int key, t_cub *cub)
         cub->key.a = 1;
     if (key == D)
         cub->key.d = 1;
+    if (key == LEFT)
+        cub->key.turn_l = 1;
+    if (key == RIGHT)
+        cub->key.turn_r = 1;
     return (0);
 }
 
@@ -69,6 +77,10 @@ int key_release(int key, t_cub *cub)
         cub->key.a = 0;
     if (key == D)
         cub->key.d = 0;
+    if (key == LEFT)
+        cub->key.turn_l = 0;
+    if (key == RIGHT)
+        cub->key.turn_r = 0;
     return (0);
 }
 

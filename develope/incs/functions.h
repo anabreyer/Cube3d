@@ -29,6 +29,8 @@ void    move_w(t_player *player, t_map *map);
 void    move_s(t_player *player, t_map *map);
 void    move_a(t_player *player, t_map *map);
 void    move_d(t_player *player, t_map *map);
+void    turn_l(t_player *player, t_map *map);
+void    turn_r(t_player *player, t_map *map);
 
 /* KEY CONTROL */
 int     key_press(int key, t_cub *cub);
