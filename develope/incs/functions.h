@@ -17,14 +17,28 @@ int     check_color(char *line, char key, t_cub *cub);
 void    dup_map(t_cub *cub, char *filename);
 
 /* INIT */
+void    init_key(t_key *key);
 void    init_ray(t_cub *cub, int x);
 void    init_player(t_player *player);
 void    init_map(t_map *map, t_cub *cub);
 int     init_cub(t_cub *cub, char *str);
 void    init_image(t_image *img, t_cub *cub);
 
+/* MOVE */
+void    move_w(t_player *player, t_map *map);
+void    move_s(t_player *player, t_map *map);
+void    move_a(t_player *player, t_map *map);
+void    move_d(t_player *player, t_map *map);
+void    turn_l(t_player *player, t_map *map);
+void    turn_r(t_player *player, t_map *map);
+
+/* KEY CONTROL */
+int     key_press(int key, t_cub *cub);
+int     key_release(int key, t_cub *cub);
+int     key_act_hooking(t_cub *cub);
+
 /* PLAY */
-int loop_game(t_cub *cub);
+int     loop_game(t_cub *cub);
 void    draw_image(t_cub *cub);
 void    paint_floor_ceiling(t_cub *cub);
 void    raycasting(t_cub *cub);
