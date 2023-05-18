@@ -63,6 +63,8 @@ int key_press(int key, t_cub *cub)
         cub->key.turn_l = 1;
     if (key == RIGHT)
         cub->key.turn_r = 1;
+    if (key == ESC)
+        freeandexit(cub);
     return (0);
 }
 

@@ -12,6 +12,7 @@ void    init_key(t_key *key)
 
 void    init_sideDist(t_raycasting *ray, t_player *player)
 {
+    //printf("Dir_y:::::::: %f\n", ray->rayDir_y);
     if (ray->rayDir_x < 0)
     {
         ray->step_x = -1;
@@ -46,7 +47,7 @@ void    init_ray(t_cub *cub, int x)
     cub->ray.map_x = (int)cub->player.pos_x;
     cub->ray.map_y = (int)cub->player.pos_y;
     // printf("\n======> PLAYER pos_X: %d, pox_Y: %d\n\n", (int)cub->player.pos_x, (int)cub->player.pos_y);
-                                                            // simplified fomula to get deltaDistX,Y : deltaDistX = abs(1 / rayDirX)
+    //printf("camera:::::::: %f\n", cub->player.plane_y);// * camera);                                                        // simplified fomula to get deltaDistX,Y : deltaDistX = abs(1 / rayDirX)
     cub->ray.deltaDist_x = fabs(1 / cub->ray.rayDir_x);     // fabs: function to get an absolute value of real numbers  abs: for integar
     cub->ray.deltaDist_y = fabs(1 / cub->ray.rayDir_y);
     init_sideDist(&cub->ray, &cub->player);
@@ -118,6 +119,8 @@ void init_player(t_player *player)
 {
     player->dir_x = 0;
     player->dir_y = 0;
+    player->plane_x = 0;
+    player->plane_y = 0;
     if (player->status == NO)
     {
         player->dir_y = -1;
@@ -138,6 +141,7 @@ void init_player(t_player *player)
         player->dir_x = 1;
         player->plane_y = 0.66;
     }
+    printf("plane_y::%f\n plane_x::%f", player->plane_y, player->plane_x);
     player->speed_move = 0.06;
     player->speed_rotate = 0.05;
 }

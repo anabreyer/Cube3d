@@ -3,6 +3,6 @@
 int keyboard(int keycode, t_cub *cub)
 {
     if (keycode == ESC)
-        freeandexit(cub); //seg fault??
+        freeandexit(cub); 
     return (0);
 }

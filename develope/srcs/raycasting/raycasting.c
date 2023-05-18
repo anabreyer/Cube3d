@@ -104,6 +104,27 @@ map - pos + 1 = -pos + map + 1
 //     }
 // }
 
+void	my_mlx_pixel_put(t_cub *cub, int x, int y, int colour)
+{
+	int	dst;
+    printf("------------------------------------\n");
+
+    //printf("data: %p\n", cub->img.data);
+    //printf("bpp: %d\n", cub->img.bpp);
+	if (x >= 0 && x <= WWIDTH && y >= 0 && y <= WHEIGHT)
+	{
+        dst = ((int)y * cub->img.size_line) + ((int)x * (cub->img.bpp / 8));
+		cub->img.data = colour;
+	}
+}
+
+void	my_mlx_pixel_put(t_cub *cub, int x, int y, int color)
+{
+	char	*dst;
+
+	dst = cub->img.data + (y * cub->img.size_line + x * (cub->img.bpp / 8));
+	*(unsigned int*)dst = color;
+}
 
 void    verLine(t_cub *cub, int x, int y1, int y2, int color)
 {
@@ -112,7 +133,8 @@ void    verLine(t_cub *cub, int x, int y1, int y2, int color)
     tmp = y1;
     while (tmp <= y2)
     {
-        mlx_pixel_put(cub->mlx, cub->win, x, tmp, color);
+        //mlx_pixel_put(cub->mlx, cub->win, x, tmp, color);
+        my_mlx_pixel_put(cub, x, tmp, color);
         tmp++;
     }
 }
