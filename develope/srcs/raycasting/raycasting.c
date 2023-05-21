@@ -132,8 +132,6 @@ void    paint_untextured_wall(t_raycasting *ray, t_cub *cub, int x)
 
     if (cub->map.map[ray->map_y][ray->map_x] == '1')
         color = 0x894a87;
-    // else
-    //     color = 0xbfff00;
     if (ray->side == 1)
         color = color / 2;
 
@@ -151,7 +149,6 @@ void    raycasting(t_cub *cub)
         init_ray(cub, x);
         calculate_dda(&cub->ray, &cub->map, &cub->player);
         paint_untextured_wall(&cub->ray, cub, x);
-        
         x++;
     }
 }

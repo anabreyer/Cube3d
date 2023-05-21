@@ -46,7 +46,7 @@ void    create_image(t_cub *cub)
             print_error("error: create_image: load xpm file to image got an error", cub);
         cub->img.data = (int *)mlx_get_data_addr(cub->img.img, &cub->img.bpp, &cub->img.size_line, &cub->img.endian);
         // When I assign data value as char* is has segfault, But I don't know why
-        printf("data : i: %d %ls\n", i, cub->img.data);
+        // printf("data : i: %d %ls\n", i, cub->img.data);
         set_img_arr(cub, i);
         mlx_destroy_image(cub->mlx, cub->img.img);
         i++;
