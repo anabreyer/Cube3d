@@ -80,6 +80,7 @@ typedef struct s_raycasting
     int         endPoint;
     int         texture_x;
     int         texture_y;
+    double      texture_pos;
     double      ratio;
 }               t_raycasting;
 

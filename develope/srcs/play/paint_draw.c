@@ -8,10 +8,10 @@ void    paint_floor_ceiling(t_cub *cub)
     int ceiling;
 
     y = 0;
-    // floor = cub->map.floor;
-    floor = 0x000080;
-    // ceiling = cub->map.ceiling;
-    ceiling = 0xdc0077;
+    floor = cub->map.floor;
+    // floor = 0x000080;
+    ceiling = cub->map.ceiling;
+    // ceiling = 0xdc0077;
     while (y < WHEIGHT / 2)
     {
         x = 0;

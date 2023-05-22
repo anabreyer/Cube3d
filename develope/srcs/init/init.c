@@ -118,6 +118,8 @@ void init_player(t_player *player)
 {
     player->dir_x = 0;
     player->dir_y = 0;
+    player->plane_x = 0;
+    player->plane_y = 0;
     if (player->status == NO)
     {
         player->dir_y = -1;

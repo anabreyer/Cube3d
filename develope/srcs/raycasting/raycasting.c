@@ -71,39 +71,63 @@ map - pos + 1 = -pos + map + 1
 */
 
 
-// void    set_buffer(t_raycasting *ray, t_image *img, int x)
-// {
-//     int y;
-//     int x;
-//     // int color;
+void    pre_buffer(t_raycasting *ray, t_player *player)
+{
+    double  wall;
 
-//     // y = ray->startPoint;
-//     // while (y < ray->endPoint)
-//     // {
-//     //     if (ray->rayDir_x >= 0)
-//     //         color = img->img_arr[EA - 1][64 * ray->tex_y + ray->tex_x];
-//     // }
-//     y = 0;
-//     while (y < WHEIGHT)
-//     {
-//         x = 0;
-//         while (x < WWIDTH)
-//         {
-//             img
-//         }
-//     }
-// }
+    if (ray->side == 0)
+        wall = player->pos_y + (ray->perpWallDist * ray->rayDir_y);
+    else
+        wall = player->pos_x + (ray->perpWallDist * ray->rayDir_x);
+    wall = wall - floor(wall);
+    ray->texture_x = (int)(wall * (double)64);
+    if (ray->side == 0 && ray->rayDir_x < 0)
+        ray->texture_x = 64 - ray->texture_x - 1;
+    if (ray->side == 1 && ray->rayDir_y > 0)
+        ray->texture_x = 64 - ray->texture_x - 1;
+    ray->line_height = (int)(WHEIGHT / ray->perpWallDist);
+    ray->startPoint = WHEIGHT / 2 - ray->line_height / 2;
+    ray->endPoint = WHEIGHT / 2 + ray->line_height / 2;
+    if (ray->startPoint < 0)
+        ray->startPoint = 0;
+    if (ray->endPoint >= WHEIGHT)
+        ray->endPoint = WHEIGHT;
+    ray->ratio = 1.0 * 64 / ray->line_height;
+    ray->texture_pos = (ray->startPoint - WHEIGHT / 2 + ray->line_height / 2) * ray->ratio;
+    
+}
 
-// void    set_buffer_base(t_raycasting *ray, t_player *player)
-// {
-//     double  wall;
+void    set_buffer(t_raycasting *ray, t_image *img, int x)
+{
+    int y;
+    int color;
 
-//     if (ray->side == 0) // if ray hits x-side wall |
-//     {
-//         wall = player->pos_x + (ray->perpWallDist)
-//     }
-// }
-
+    y = ray->startPoint;
+    while (y < ray->endPoint)
+    {
+        ray->texture_y = (int)ray->texture_pos & (64 - 1);
+        if (ray->side == 0)
+        {
+            // printf("condition test: %d      tex_x:%d   tex_y: %d dir_x: %f dir_y: %f\n", 64 * ray->texture_y + ray->texture_x, ray->texture_x, ray->texture_y, ray->rayDir_x, ray->rayDir_y);
+            if (ray->rayDir_x >= 0)
+                color = img->img_arr[EA - 1][64 * ray->texture_y + ray->texture_x];
+            else
+                color = img->img_arr[WE - 1][64 * ray->texture_y + ray->texture_x];
+        }
+        else if (ray->side == 1)
+        {
+            if (ray->rayDir_y >= 0)
+                color = img->img_arr[SO - 1][64 * ray->texture_y + ray->texture_x];
+            else
+                color = img->img_arr[NO - 1][64 * ray->texture_y + ray->texture_x];
+        }
+        img->buffer[y][x] = color;
+        ray->texture_pos += ray->ratio;
+        y++;
+    }
+    
+    
+}
 
 void    verLine(t_cub *cub, int x, int y1, int y2, int color)
 {
@@ -148,7 +172,9 @@ void    raycasting(t_cub *cub)
     {
         init_ray(cub, x);
         calculate_dda(&cub->ray, &cub->map, &cub->player);
-        paint_untextured_wall(&cub->ray, cub, x);
+        // paint_untextured_wall(&cub->ray, cub, x);
+        pre_buffer(&cub->ray, &cub->player);
+        set_buffer(&cub->ray, &cub->img, x);
         x++;
     }
 }
