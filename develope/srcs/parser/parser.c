@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parser.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaduan-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:59:15 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 15:07:01 by aaduan-b         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:50:16 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,8 +69,8 @@ int	file_check(t_map *map, t_player *player, char *line, t_cub *cub)
 		if (!map->img_path[0] || !map->img_path[1] \
 			|| !map->img_path[2] || !map->img_path[3] \
 			|| map->rgb_c[0] == -1 || map->rgb_f[0] == -1)
-			print_error("something missing or wrong \
-				order data in the file", cub);
+			print_error("map error: something missing or the data " \
+				"is in wrong order", cub);
 		else
 			check_mapsyntax(map, player, line, cub);
 	}
