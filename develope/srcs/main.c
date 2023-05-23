@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 			mlx_loop(cub.mlx);
 		}
 		else
-			exitandfree (cub);
+			freeandexit (&cub);
 	}
 	return (0);
 }
