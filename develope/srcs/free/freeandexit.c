@@ -4,20 +4,15 @@ int	freeandexit(t_cub *cub)
 {
     int i;
     i = 0;
-    if (cub->mlx != NULL)
+    if (cub->mlx)
     {
         mlx_destroy_image(cub->mlx, cub->img.img);
         mlx_destroy_window(cub->mlx, cub->win);
-        while (i < 4)
-        {
-            free(cub->map.img_path[i]);
-            i++;
-        }
         mlx_destroy_display(cub->mlx);
         free(cub->mlx);
     }
     freemap(cub);
-    // free_img_arr(cub); //seg fault
+    free_img_arr(cub);
     exit(0);
 }
 
@@ -33,6 +28,13 @@ int	freemap(t_cub *cub)
 	}
 	if (cub->map.map)
 		free(cub->map.map);
+	i = 0;
+	while (i < 4)
+	{
+		if (cub->map.img_path[i] != NULL)
+			free(cub->map.img_path[i]);
+		i++;
+	}
 	return (0);
 }
 
@@ -41,13 +43,16 @@ int	free_img_arr(t_cub *cub)
     int	i;
 
 	i = 0;
-	while (i < cub->img.height)
-	{
-		free(cub->img.img_arr[i]);
-		i++;
-	}
 	if (cub->img.img_arr)
+	{
+		while (i < 4)
+		{
+			if (cub->img.img_arr[i])
+				free(cub->img.img_arr[i]);
+			i++;
+		}
 		free(cub->img.img_arr);
+	}
 	return (0);
 }
 
