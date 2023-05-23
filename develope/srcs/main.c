@@ -6,7 +6,7 @@
 /*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:53:54 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:53:55 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 15:28:38 by aaduan-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char *argv[])
 			mlx_loop(cub.mlx);
 		}
 		else
-			exitandfree (cub);
+			freeandexit(&cub);
 	}
 	return (0);
 }
