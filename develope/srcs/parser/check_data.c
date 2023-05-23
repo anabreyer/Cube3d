@@ -24,7 +24,8 @@ int check_path(char *line, t_cub *cub)
     if (!path)
         return (1);
     if (line[0] == 'N' && cub->map.img_path[0] == NULL)
-    {   cub->map.img_path[0] = ft_strdup(path);
+    {   
+        cub->map.img_path[0] = ft_strdup(path);
     }
     else if (line[0] == 'S' && cub->map.img_path[1] == NULL)
     {

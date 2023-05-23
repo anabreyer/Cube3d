@@ -36,7 +36,7 @@ int	closebutton(t_cub *cub)
     if (cub->img.img != NULL)
 		mlx_destroy_image(cub->mlx, cub->img.img);
 	mlx_destroy_window(cub->mlx, cub->win);
-	exit (0);
+	freeandexit (cub);
 	return (0);
 }
 
@@ -50,7 +50,6 @@ int	closebutton(t_cub *cub)
 
 int key_press(int key, t_cub *cub)
 {
-    printf("Key : %d\n", key);
     if (key == W)
         cub->key.w = 1;
     if (key == S)
@@ -64,13 +63,12 @@ int key_press(int key, t_cub *cub)
     if (key == RIGHT)
         cub->key.turn_r = 1;
     if (key == ESC)
-		exit (0);
+		freeandexit (cub);
     return (0);
 }
 
 int key_release(int key, t_cub *cub)
 {
-    printf("KEY : %d RELEASE\n", key);
     if (key == W)
         cub->key.w = 0;
     if (key == S)
