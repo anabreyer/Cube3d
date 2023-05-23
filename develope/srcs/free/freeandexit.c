@@ -1,19 +1,32 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   freeandexit.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 14:25:50 by jischoi           #+#    #+#             */
+/*   Updated: 2023/05/23 14:25:57 by jischoi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "cub3d.h"
 
 int	freeandexit(t_cub *cub)
 {
-    int i;
-    i = 0;
-    if (cub->mlx)
-    {
-        mlx_destroy_image(cub->mlx, cub->img.img);
-        mlx_destroy_window(cub->mlx, cub->win);
-        mlx_destroy_display(cub->mlx);
-        free(cub->mlx);
-    }
-    freemap(cub);
-    free_img_arr(cub);
-    exit(0);
+	int	i;
+
+	i = 0;
+	if (cub->mlx)
+	{
+		mlx_destroy_image(cub->mlx, cub->img.img);
+		mlx_destroy_window(cub->mlx, cub->win);
+		mlx_destroy_display(cub->mlx);
+		free(cub->mlx);
+	}
+	freemap(cub);
+	free_img_arr(cub);
+	exit(0);
 }
 
 int	freemap(t_cub *cub)
@@ -40,7 +53,7 @@ int	freemap(t_cub *cub)
 
 int	free_img_arr(t_cub *cub)
 {
-    int	i;
+	int	i;
 
 	i = 0;
 	if (cub->img.img_arr)
@@ -55,14 +68,3 @@ int	free_img_arr(t_cub *cub)
 	}
 	return (0);
 }
-
-// int	closebutton(t_cub *cub)
-// {
-// 	mlx_destroy_image(cub->mlx, cub->img.img);
-// 	exit (0);
-// 	return (0);
-// }
-
-//free cub->map.map
-// free cub->img.img_arr
-// use free mahrix function

@@ -32,12 +32,12 @@
 
 enum e_texture
 {
-    NO = 1,
-    SO,
-    WE,
-    EA
-    // F,
-    // C
+	NO = 1,
+	SO,
+	WE,
+	EA
+	// F,
+	// C
 };
 
 #endif

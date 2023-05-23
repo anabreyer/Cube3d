@@ -30,7 +30,7 @@ SRC_RAY		= raycasting/raycasting.c
 
 SRC_FREE	= free/freeandexit.c
 
-SRC_KEY		= key_control/keyboard.c\
+SRC_KEY		= key_control/turn.c\
 				key_control/key_action.c\
 				key_control/move.c
 
