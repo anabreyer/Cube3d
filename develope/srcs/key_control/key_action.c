@@ -31,9 +31,6 @@ int	key_act_hooking(t_cub *cub)
 
 int	closebutton(t_cub *cub)
 {
-	if (cub->img.img != NULL)
-		mlx_destroy_image(cub->mlx, cub->img.img);
-	mlx_destroy_window(cub->mlx, cub->win);
 	freeandexit (cub, NULL);
 	return (0);
 }
