@@ -11,7 +11,7 @@ void print_error(char *msg, t_cub *cub)
 int skip_spacei(char *str)
 {
     int i;
-
+    
     i = 0;
     while (ft_isspace(str[i]))
         i++;

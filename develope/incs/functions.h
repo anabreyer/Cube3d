@@ -5,58 +5,58 @@
 #include "cub3d.h"
 
 /* UTILS */
-int     ft_isspace(char c);
-int     skip_spacei(char *str);
-void    print_error(char *msg, t_cub *cub);
+int	 ft_isspace(char c);
+int	 skip_spacei(char *str);
+void	print_error(char *msg, t_cub *cub);
 
 /* PARSER */
-int     check_extension(char *filename);
-int     check_path(char *line, t_cub *cub);
-int     file_parser(t_cub *cub, char *filename);
-int     check_color(char *line, char key, t_cub *cub);
-void    dup_map(t_cub *cub, char *filename);
+int	 check_extension(char *filename);
+int	 check_path(char *line, t_cub *cub);
+int	 file_parser(t_cub *cub, char *filename);
+int	 check_color(char *line, char key, t_cub *cub);
+void	dup_map(t_cub *cub, char *filename);
 
 /* INIT */
-void    init_key(t_key *key);
-void    init_ray(t_cub *cub, int x);
-void    init_player(t_player *player);
-void    init_map(t_map *map, t_cub *cub);
-int     init_cub(t_cub *cub, char *str);
-void    init_image(t_image *img, t_cub *cub);
+void	init_key(t_key *key);
+void	init_ray(t_cub *cub, int x);
+void	init_player(t_player *player);
+void	init_map(t_map *map, t_cub *cub);
+int	 init_cub(t_cub *cub, char *str);
+void	init_image(t_image *img, t_cub *cub);
 
 /* MOVE */
-void    move_w(t_player *player, t_map *map);
-void    move_s(t_player *player, t_map *map);
-void    move_a(t_player *player, t_map *map);
-void    move_d(t_player *player, t_map *map);
-void    turn_l(t_player *player, t_map *map);
-void    turn_r(t_player *player, t_map *map);
+void	move_w(t_player *player, t_map *map);
+void	move_s(t_player *player, t_map *map);
+void	move_a(t_player *player, t_map *map);
+void	move_d(t_player *player, t_map *map);
+void	turn_l(t_player *player, t_map *map);
+void	turn_r(t_player *player, t_map *map);
 
 /* KEY CONTROL */
-int     key_press(int key, t_cub *cub);
-int     key_release(int key, t_cub *cub);
-int     key_act_hooking(t_cub *cub);
+int	 key_press(int key, t_cub *cub);
+int	 key_release(int key, t_cub *cub);
+int	 key_act_hooking(t_cub *cub);
 
 /* PLAY */
-int     loop_game(t_cub *cub);
-void    draw_image(t_cub *cub);
-void    paint_floor_ceiling(t_cub *cub);
-void    raycasting(t_cub *cub);
-int     routine(t_cub *cub);
-int     create_window(t_cub *cub);
-void    create_image(t_cub *cub);
-int     go_hooking(t_cub *cub);
-int     keyboard(int keycode, t_cub *cub);
-void    init_minimap(t_cub *cub);
+int	 loop_game(t_cub *cub);
+void	draw_image(t_cub *cub);
+void	paint_floor_ceiling(t_cub *cub);
+void	raycasting(t_cub *cub);
+int	 routine(t_cub *cub);
+int	 create_window(t_cub *cub);
+void	create_image(t_cub *cub);
+int	 go_hooking(t_cub *cub);
+int	 keyboard(int keycode, t_cub *cub);
+void	init_minimap(t_cub *cub);
 
 
 /* FREE */
-int     closebutton(t_cub *cub);
-int     freeandexit(t_cub *cub);
-int     freemap(t_cub *cub);
-int     free_img_arr(t_cub *cub);
+int	 closebutton(t_cub *cub);
+int	 freeandexit(t_cub *cub);
+int	 freemap(t_cub *cub);
+int	 free_img_arr(t_cub *cub);
 
 /* MAIN */
-int     main(int argc, char *argv[]);
+int	 main(int argc, char *argv[]);
 
 #endif
