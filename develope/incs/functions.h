@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:32:09 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 16:31:37 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 19:30:30 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 /* UTILS */
 int		ft_isspace(char c);
 int		skip_spacei(char *str);
-void	print_error(char *msg, t_cub *cub);
+void	print_error(char *msg, t_cub *cub, char *line);
+char	*replace_char(char *str);
 
 /* PARSER */
 int		check_extension(char *filename);
@@ -27,7 +28,7 @@ int		file_parser(t_cub *cub, char *filename);
 int		file_check(t_map *map, t_player *player, char *line, t_cub *cub);
 int		check_color(char *line, char key, t_cub *cub);
 void	dup_map(t_cub *cub, char *filename);
-void	file_parser_util(char*line, int fd, int i, t_cub *cub);
+void	file_parser_util(char*line, int fd, t_cub *cub);
 
 /* INIT */
 void	init_key(t_key *key);
@@ -65,7 +66,7 @@ void	init_minimap(t_cub *cub);
 
 /* FREE */
 int		closebutton(t_cub *cub);
-int		freeandexit(t_cub *cub);
+int		freeandexit(t_cub *cub, char *line);
 int		freemap(t_cub *cub);
 int		free_img_arr(t_cub *cub);
 

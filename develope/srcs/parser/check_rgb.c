@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:47:59 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 16:26:02 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 18:52:17 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ int	check_syntax_rgb(char *line, t_cub *cub)
 		if (line[i] == ',')
 			comma++;
 		if (!ft_isspace(line[i]) && !ft_isdigit(line[i]) && line[i] != ',')
-			print_error("found non-numeric for rgb", cub);
+		{
+			print_error("found non-numeric for rgb", cub, line - 2);
+		}
 		if (!ft_isdigit(line[i]) && ft_isdigit(line[i + 1]))
 			count++;
 		i++;
 	}
 	if (comma != 2 || count > 3)
-	{
-		return (print_error("rgb syntax error", cub), -1);
-	}
+		return (print_error("rgb syntax error", cub, line - 2), -1);
 	return (check_range(line));
 }
 
@@ -83,7 +83,7 @@ int	check_color(char *line, char key, t_cub *cub)
 		line++;
 	if (check_syntax_rgb(line, cub))
 	{
-		print_error("rgb range error: (0-255)", cub);
+		print_error("rgb range error: (0-255)", cub, line - 2);
 	}
 	i = 0;
 	if (key == 'C')

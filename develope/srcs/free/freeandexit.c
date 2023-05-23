@@ -6,17 +6,19 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:25:50 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 16:33:36 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 18:50:47 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	freeandexit(t_cub *cub)
+int	freeandexit(t_cub *cub, char *line)
 {
 	int	i;
 
 	i = 0;
+	if (line)
+		free(line);
 	if (cub->mlx)
 	{
 		mlx_destroy_image(cub->mlx, cub->img.img);
@@ -34,7 +36,7 @@ int	freemap(t_cub *cub)
 	int	i;
 
 	i = 0;
-	while (i < cub->map.height)
+	while (cub->map.map && cub->map.map[i])
 	{
 		free(cub->map.map[i]);
 		i++;

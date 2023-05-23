@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_action.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:34:18 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:34:19 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 18:55:28 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	closebutton(t_cub *cub)
 	if (cub->img.img != NULL)
 		mlx_destroy_image(cub->mlx, cub->img.img);
 	mlx_destroy_window(cub->mlx, cub->win);
-	freeandexit (cub);
+	freeandexit (cub, NULL);
 	return (0);
 }
 
@@ -60,7 +60,7 @@ int	key_press(int key, t_cub *cub)
 	if (key == RIGHT)
 		cub->key.turn_r = 1;
 	if (key == ESC)
-		freeandexit (cub);
+		freeandexit (cub, NULL);
 	return (0);
 }
 

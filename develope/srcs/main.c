@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:53:54 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 16:29:41 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 18:55:18 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ int	main(int argc, char *argv[])
 	t_cub	cub;
 
 	if (argc < 2)
-		print_error("missing map file 🫥", NULL);
+		print_error("missing map file 🫥", NULL, NULL);
 	else if (argc > 2)
-		print_error("too many arguments 🫠", NULL);
+		print_error("too many arguments 🫠", NULL, NULL);
 	else if (argc == 2 && !check_extension(argv[1]))
 	{
 		init_cub(&cub);
@@ -36,7 +36,7 @@ int	main(int argc, char *argv[])
 			mlx_loop(cub.mlx);
 		}
 		else
-			freeandexit (&cub);
+			freeandexit (&cub, NULL);
 	}
 	return (0);
 }

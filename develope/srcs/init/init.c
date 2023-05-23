@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaduan-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:22:22 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 14:40:26 by aaduan-b         ###   ########.fr       */
+/*   Updated: 2023/05/23 19:27:34 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,6 @@ void	init_player(t_player *player)
 		player->dir_x = 1;
 		player->plane_y = 0.66;
 	}
-	player->speed_move = 0.06;
-	player->speed_rotate = 0.05;
+	player->speed_move = 0.03;
+	player->speed_rotate = 0.02;
 }

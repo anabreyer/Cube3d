@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:39:57 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 16:46:00 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 18:57:31 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,13 +51,13 @@ void	init_img_sub(t_image *img, t_cub *cub)
 	}
 	img->img_arr = (int **)malloc(4 * sizeof(int *));
 	if (!img->img_arr)
-		print_error("error: init_img_sub: img_arr malloc failed", cub);
+		print_error("error: init_img_sub: img_arr malloc failed", cub, NULL);
 	i = 0;
 	while (i < 4)
 	{
 		img->img_arr[i] = (int *)malloc(sizeof(int) * 64 * 64);
 		if (!img->img_arr[i])
-			print_error("error: init_img_sub: img_arr malloc2 failed", cub);
+			print_error("error: img_arr malloc failed", cub, NULL);
 		ft_memset(img->img_arr[i], 0, (sizeof(int) * 64 * 64));
 		i++;
 	}

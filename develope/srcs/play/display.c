@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:47:33 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:47:34 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 19:17:55 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,13 +40,11 @@ void	create_image(t_cub *cub)
 	while (i < 4)
 	{
 		path = cub->map.img_path[i];
-		printf("path: %s\n", path);
 		cub->img.img = mlx_xpm_file_to_image(cub->mlx, path, \
 			&cub->img.width, &cub->img.height);
-		printf("cub->img.width : %d  \n", cub->img.width);
 		if (cub->img.width != 64 || cub->img.height != 64 || !cub->img.img)
 			print_error("error: create_image: load xpm" \
-				" file to image got an error", cub);
+				" file to image got an error", cub, NULL);
 		cub->img.data = (int *)mlx_get_data_addr(cub->img.img, \
 			&cub->img.bpp, &cub->img.size_line, &cub->img.endian);
 		set_img_arr(cub, i);
@@ -59,9 +57,9 @@ int	create_window(t_cub *cub)
 {
 	cub->mlx = mlx_init();
 	if (!cub->mlx)
-		print_error("error: create_window: failed to init mlx", cub);
+		print_error("error: create_window: failed to init mlx", cub, NULL);
 	cub->win = mlx_new_window(cub->mlx, WWIDTH, WHEIGHT, "Cub3D");
 	if (!cub->win)
-		print_error("error: create_window: failed to create window", cub);
+		print_error("error: create_window: failed to create window", cub, NULL);
 	return (0);
 }
