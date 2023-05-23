@@ -65,22 +65,22 @@ typedef struct s_raycasting
 {
 	int		 map_x;		  // the box of the map we're in
 	int		 map_y;
-	double	  sideDist_x;	 // length of ray from current position to next x or y-side
-	double	  sideDist_y;
-	double	  deltaDist_x;	// length of ray from one x or y-side to next x or y-side
-	double	  deltaDist_y;
-	double	  rayDir_x;
-	double	  rayDir_y;
-	double	  perpWallDist;
+	double	  sidedist_x;	 // length of ray from current position to next x or y-side
+	double	  sidedist_y;
+	double	  deltadist_x;	// length of ray from one x or y-side to next x or y-side
+	double	  deltadist_y;
+	double	  raydir_x;
+	double	  raydir_y;
+	double	  perpwalldist;
 	int		 step_x;		 // direction to step in x or y-direction (either +1 or -1): (stepX = 1 ↗ & stepX = -1 ↖)
 	int		 step_y;		 // (stepY = 1 ↘ & stepX = -1 ↗)
 	int		 side;		   // was a NS or EW wall hit
 	int		 line_height;
-	int		 startPoint;
-	int		 endPoint;
-	int		 texture_x;
-	int		 texture_y;
-	double	  texture_pos;
+	int		 startpoint;
+	int		 endpoint;
+	int		 tex_x;
+	int		 tex_y;
+	double	  t_pos;
 	double	  ratio;
 }			   t_raycasting;
 
