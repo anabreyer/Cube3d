@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:50:27 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:50:28 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 16:09:11 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	print_error(char *msg, t_cub *cub)
 {
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\n", 2);
-	ft_putstr_fd("Error\n", 2);
 	freeandexit(cub);
 }
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:53:54 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:53:55 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/23 16:29:41 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	main(int argc, char *argv[])
 		print_error("too many arguments 🫠", NULL);
 	else if (argc == 2 && !check_extension(argv[1]))
 	{
+		init_cub(&cub);
 		if (!file_parser(&cub, argv[1]))
 		{
 			routine(&cub);

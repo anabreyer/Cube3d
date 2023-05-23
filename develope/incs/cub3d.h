@@ -1,6 +1,17 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aaduan-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/05/23 15:29:36 by aaduan-b          #+#    #+#             */
+/*   Updated: 2023/05/23 15:30:18 by aaduan-b         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
-# ifndef CUB3D_H
-#define CUB3D_H
+#ifndef CUB3D_H
+# define CUB3D_H
 
 # include "mlx.h"
 # include "libft.h"
@@ -19,7 +30,6 @@
 # define COLOUR_MAP_FLOOR 0xffffff
 # define MINIMAP_SIZE 6
 # define ESC 65307
-// followed by x11 linux keycode
 # define W 119
 # define S 115
 # define D 97
@@ -36,8 +46,6 @@ enum e_texture
 	SO,
 	WE,
 	EA
-	// F,
-	// C
 };
 
 #endif
