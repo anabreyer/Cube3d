@@ -12,12 +12,15 @@ DIRFREE		= ./free/
 HEAD		= ./incs/
 
 SRC_PARSER	= parser/check_data.c\
+				parser/check_data_2.c\
 				parser/parser.c\
-				parser/dup_map.c
+				parser/dup_map.c\
+				parser/parser_2.c
 
 SRC_UTILS	= utils/utils.c
 
-SRC_INIT	= init/init.c
+SRC_INIT	= init/init.c\
+				init/init2.c
 
 SRC_PLAY	= play/display.c\
 				play/routine.c\

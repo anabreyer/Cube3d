@@ -15,11 +15,13 @@ int     check_path(char *line, t_cub *cub);
 int     file_parser(t_cub *cub, char *filename);
 int     check_color(char *line, char key, t_cub *cub);
 void    dup_map(t_cub *cub, char *filename);
+void	file_parser_util(char*line, int fd, int i, t_cub *cub);
 
 /* INIT */
 void    init_key(t_key *key);
 void    init_ray(t_cub *cub, int x);
 void    init_player(t_player *player);
+void    init_player_2(t_player *player);
 void    init_map(t_map *map, t_cub *cub);
 int     init_cub(t_cub *cub, char *str);
 void    init_image(t_image *img, t_cub *cub);
