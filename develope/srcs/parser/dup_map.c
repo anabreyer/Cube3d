@@ -6,13 +6,13 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:54:08 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 21:04:02 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:31:09 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_wall(t_map *map, char **m, t_cub *cub)
+int	check_wall(t_map *map, char **m)
 {
 	int	i;
 	int	j;
@@ -124,7 +124,7 @@ void	dup_map(t_cub *cub, char *filename)
 	read_set_map(fd, cub, tmp);
 	tmp[cub->map.height] = 0;
 	cub->map.map = tmp;
-	if (check_wall(&cub->map, cub->map.map, cub))
+	if (check_wall(&cub->map, cub->map.map))
 		print_error("map error: opened wall", cub, NULL);
 	else
 		printf("map is ready\n");

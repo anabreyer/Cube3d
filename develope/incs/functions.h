@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:32:09 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 19:30:30 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:36:21 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	init_key(t_key *key);
 void	init_ray(t_cub *cub, int x);
 void	init_player(t_player *player);
 void	init_player_2(t_player *player);
-void	init_map(t_map *map, t_cub *cub);
+void	init_map(t_map *map);
 void	init_cub(t_cub *cub);
 void	init_image(t_image *img, t_cub *cub);
 
@@ -44,8 +44,8 @@ void	move_w(t_player *player, t_map *map);
 void	move_s(t_player *player, t_map *map);
 void	move_a(t_player *player, t_map *map);
 void	move_d(t_player *player, t_map *map);
-void	turn_l(t_player *player, t_map *map);
-void	turn_r(t_player *player, t_map *map);
+void	turn_l(t_player *player);
+void	turn_r(t_player *player);
 
 /* KEY CONTROL */
 int		key_press(int key, t_cub *cub);
@@ -56,12 +56,16 @@ int		key_act_hooking(t_cub *cub);
 int		loop_game(t_cub *cub);
 void	draw_image(t_cub *cub);
 void	paint_floor_ceiling(t_cub *cub);
-void	raycasting(t_cub *cub);
 int		routine(t_cub *cub);
 int		create_window(t_cub *cub);
 void	create_image(t_cub *cub);
 int		go_hooking(t_cub *cub);
 int		keyboard(int keycode, t_cub *cub);
+
+/* RAYCASTING */
+void	raycasting(t_cub *cub);
+
+/* MINIMAP */
 void	init_minimap(t_cub *cub);
 
 /* FREE */

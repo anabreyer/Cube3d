@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:59:15 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 21:01:14 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:30:34 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	set_status(char dir)
 		return (WE);
 	else if (dir == 'E')
 		return (EA);
+	return (-1);
 }
 
 void	check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)

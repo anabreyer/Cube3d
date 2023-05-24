@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:50:27 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 19:16:56 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:39:43 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ void	print_error(char *msg, t_cub *cub, char *line)
 	ft_putstr_fd(msg, 2);
 	ft_putstr_fd("\033[0;00m", 2);
 	ft_putstr_fd("\n", 2);
-	freeandexit(cub, line);
+	if (cub)
+		freeandexit(cub, line);
 }
 
 int	skip_spacei(char *str)

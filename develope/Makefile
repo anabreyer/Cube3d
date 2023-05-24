@@ -53,7 +53,7 @@ NAMEMLX		= libmlx.a
 CC			= gcc
 RM			= rm -f
 
-CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext -g
+CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext -g -Wextra -Wall -Werror
 
 .c.o:
 			${CC} ${CFLAGS} -c -I${DIRINC} -I${DIRMLX} -I${DIRLIB} $< -o ${<:.c=.o}

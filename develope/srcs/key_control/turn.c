@@ -6,13 +6,13 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:36:50 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:38:37 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:35:45 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	turn_l(t_player *player, t_map *map)
+void	turn_l(t_player *player)
 {
 	double	old_dir;
 	double	old_plane;
@@ -29,7 +29,7 @@ void	turn_l(t_player *player, t_map *map)
 		- old_plane * sin(-(player->speed_rotate));
 }
 
-void	turn_r(t_player *player, t_map *map)
+void	turn_r(t_player *player)
 {
 	double	old_dir;
 	double	old_plane;

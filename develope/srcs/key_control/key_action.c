@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:34:18 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 18:55:28 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:36:03 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ int	key_act_hooking(t_cub *cub)
 	if (cub->key.d && !cub->key.a)
 		move_d(&cub->player, &cub->map);
 	if (cub->key.turn_l && !cub->key.turn_r)
-		turn_l(&cub->player, &cub->map);
+		turn_l(&cub->player);
 	if (cub->key.turn_r && !cub->key.turn_l)
-		turn_r(&cub->player, &cub->map);
+		turn_r(&cub->player);
 	return (0);
 }
 

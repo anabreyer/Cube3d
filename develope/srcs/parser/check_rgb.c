@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:47:59 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 18:52:17 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:29:56 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	rgb_split(char *line, int rgb[3], char sep)
 	i = 0;
 	while (line && *line && i < 3)
 	{
-		while (*line && (ft_isspace(*line) || *line == ','))
+		while (*line && (ft_isspace(*line) || *line == sep))
 			line++;
 		rgb[i] = ft_atoi(line);
 		i++;
@@ -76,8 +76,6 @@ void	rgb_split(char *line, int rgb[3], char sep)
 
 int	check_color(char *line, char key, t_cub *cub)
 {
-	int	i;
-
 	line += 2;
 	while (ft_isspace(*line))
 		line++;
@@ -85,7 +83,6 @@ int	check_color(char *line, char key, t_cub *cub)
 	{
 		print_error("rgb range error: (0-255)", cub, line - 2);
 	}
-	i = 0;
 	if (key == 'C')
 	{
 		rgb_split(line, cub->map.rgb_c, ',');

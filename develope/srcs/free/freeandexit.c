@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:25:50 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 18:50:47 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:35:21 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 
 int	freeandexit(t_cub *cub, char *line)
 {
-	int	i;
-
-	i = 0;
 	if (line)
 		free(line);
 	if (cub->mlx)

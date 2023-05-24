@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jischoi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:44:38 by jischoi           #+#    #+#             */
-/*   Updated: 2023/05/23 14:44:42 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:33:56 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	calculate_dda(t_raycasting *ray, t_map *map, t_player *player)
+void	calculate_dda(t_raycasting *ray, t_map *map)
 {
 	int	hit;
 
@@ -133,7 +133,7 @@ void	raycasting(t_cub *cub)
 	while (x < WWIDTH)
 	{
 		init_ray(cub, x);
-		calculate_dda(&cub->ray, &cub->map, &cub->player);
+		calculate_dda(&cub->ray, &cub->map);
 		pre_buffer(&cub->ray, &cub->player);
 		set_buffer(&cub->ray, &cub->img, x);
 		x++;
