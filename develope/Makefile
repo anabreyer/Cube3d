@@ -45,8 +45,8 @@ SAN 		= -fsanitize=leak
 
 OBJS		= $(ALLSRCS:.c=.o)
 
-NAME		= Cub3D
-NAME_BONUS	= Cub3D_bonus
+NAME		= cub3d
+NAME_BONUS	= cub3d_bonus
 NAMELFT		= libft.a
 NAMEMLX		= libmlx.a
 

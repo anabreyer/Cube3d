@@ -76,6 +76,10 @@ void	init_image(t_image *img, t_cub *cub)
 
 void	init_cub(t_cub *cub)
 {
+	// cub->map.map = NULL;
+	init_map(&cub->map);
+	cub->fd[0] = 0;
+	cub->fd[1] = 0;
 	cub->mlx = NULL;
 	cub->win = NULL;
 	cub->img.img_arr = NULL;

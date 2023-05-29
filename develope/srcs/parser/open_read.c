@@ -15,17 +15,17 @@
 int	file_parser(t_cub *cub, char *filename)
 {
 	char	*line;
-	int		fd;
 
 	line = NULL;
-	fd = open(filename, O_RDONLY);
-	if (fd == -1)
+	cub->fd[0] = open(filename, O_RDONLY);
+	if (cub->fd[0] == -1)
 		print_error("cannot open file", cub, NULL);
-	init_map(&cub->map);
+	// init_map(&cub->map);
 	cub->player.status = 0;
-	file_parser_util(line, fd, cub);
+	file_parser_util(line, cub->fd[0], cub);
 	dup_map(cub, filename);
-	close(fd);
+	close(cub->fd[0]);
+	cub->fd[0] = 0;
 	return (0);
 }
 

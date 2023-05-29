@@ -94,6 +94,7 @@ typedef struct s_key
 
 typedef struct s_cub
 {
+	int				fd[2];
 	void			*mlx;
 	void			*win;
 	t_map			map;

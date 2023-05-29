@@ -18,11 +18,17 @@ int	freeandexit(t_cub *cub, char *line)
 		free(line);
 	if (cub->mlx)
 	{
-		mlx_destroy_image(cub->mlx, cub->img.img);
-		mlx_destroy_window(cub->mlx, cub->win);
+		if (cub->img.img)
+			mlx_destroy_image(cub->mlx, cub->img.img);
+		if (cub->win)
+			mlx_destroy_window(cub->mlx, cub->win);
 		mlx_destroy_display(cub->mlx);
 		free(cub->mlx);
 	}
+	if (cub->fd[0] > 0)
+		close (cub->fd[0]);
+	if (cub->fd[1] > 0)
+		close (cub->fd[1]);
 	freemap(cub);
 	free_img_arr(cub);
 	exit(0);
