@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:11:44 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/24 16:32:36 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/31 16:31:11 by aaduan-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	file_parser(t_cub *cub, char *filename)
 	cub->fd[0] = open(filename, O_RDONLY);
 	if (cub->fd[0] == -1)
 		print_error("cannot open file", cub, NULL);
-	// init_map(&cub->map);
 	cub->player.status = 0;
 	file_parser_util(line, cub->fd[0], cub);
 	dup_map(cub, filename);

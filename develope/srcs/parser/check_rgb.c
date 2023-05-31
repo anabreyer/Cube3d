@@ -74,6 +74,12 @@ void	rgb_split(char *line, int rgb[3], char sep)
 	}
 }
 
+void	really_extra(char *line, int i)
+{
+	line++;
+	i++;
+}
+
 int	check_color(char *line, char key, t_cub *cub)
 {
 	int	i;
@@ -82,8 +88,7 @@ int	check_color(char *line, char key, t_cub *cub)
 	line += 2;
 	while (ft_isspace(*line))
 	{
-		line++;
-		i++;
+		really_extra(line, i);
 	}
 	if (check_syntax_rgb(line, cub, i))
 		print_error("rgb range error: (0-255)", cub, line - 2 - i);

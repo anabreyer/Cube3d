@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:54:08 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/24 16:31:09 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/31 16:30:56 by aaduan-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,7 @@ int	check_wall(t_map *map, char **m)
 		j = 0;
 		while (m[i][j])
 		{
-			if (m[i][j] == '0' || m[i][j] == 'E' || m[i][j] == 'W' \
-				|| m[i][j] == 'S' || m[i][j] == 'N')
+			if (ft_strchr("NSEW0", map->map[i][j]))
 			{
 				if (i == 0 || j == 0 || i == map->height - 1 || !m[i][j + 1])
 					return (1);
@@ -54,7 +53,7 @@ void	read_set_map(int fd, t_cub *cub, char **tmp)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		line = replace_char(line);
 		str = (char *)malloc(sizeof(char) * (cub->map.width + 1));
 		if (!str)
@@ -80,7 +79,7 @@ void	read_til_start(int fd, t_cub *cub)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			break;
+			break ;
 		free(line);
 		line = NULL;
 		i++;
@@ -134,8 +133,6 @@ void	dup_map(t_cub *cub, char *filename)
 	cub->map.map = tmp;
 	if (check_wall(&cub->map, cub->map.map))
 		print_error("map error: opened wall", cub, NULL);
-	else
-		printf("map is ready\n");
 	set_player_pos(&cub->player, cub->map.map);
 	close(cub->fd[1]);
 	cub->fd[1] = 0;

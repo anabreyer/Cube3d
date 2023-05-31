@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:39:57 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/24 16:32:24 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/31 16:31:54 by aaduan-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ void	init_image(t_image *img, t_cub *cub)
 
 void	init_cub(t_cub *cub)
 {
-	// cub->map.map = NULL;
 	init_map(&cub->map);
 	cub->fd[0] = 0;
 	cub->fd[1] = 0;
