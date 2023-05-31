@@ -42,6 +42,8 @@ void	create_image(t_cub *cub)
 		path = cub->map.img_path[i];
 		cub->img.img = mlx_xpm_file_to_image(cub->mlx, path, \
 			&cub->img.width, &cub->img.height);
+		if (!cub->img.img)
+			print_error("error: mlx_xpm_file_to_image", cub, NULL);
 		if (cub->img.width != 64 || cub->img.height != 64 || !cub->img.img)
 			print_error("error: create_image: load xpm" \
 				" file to image got an error", cub, NULL);

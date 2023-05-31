@@ -3,12 +3,6 @@ DIRINC		= ./incs/
 DIROBJ		= ./objs/
 DIRLIB		= ./libft/
 DIRMLX		= ./minilibx-linux/
-# DIRBMP		= ./libbmp/
-DIRINIT		= ./init/
-DIRUTIL		= ./utils/
-DIRPARS		= ./parser/
-DIRPLAY		= ./play/
-DIRFREE		= ./free/
 HEAD		= ./incs/
 
 SRC_PARSER	= parser/check_path.c\
@@ -51,15 +45,15 @@ SAN 		= -fsanitize=leak
 
 OBJS		= $(ALLSRCS:.c=.o)
 
-NAME		= Cub3D
+NAME		= cub3d
+NAME_BONUS	= cub3d_bonus
 NAMELFT		= libft.a
 NAMEMLX		= libmlx.a
-# NAMEBMP		= libbmp.a
 
 CC			= gcc
 RM			= rm -f
 
-CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext -g
+CFLAGS		= -lft -lmlx -lm -lbsd -lX11 -lXext -g -Wextra -Wall -Werror
 
 .c.o:
 			${CC} ${CFLAGS} -c -I${DIRINC} -I${DIRMLX} -I${DIRLIB} $< -o ${<:.c=.o}
@@ -74,11 +68,18 @@ main:		$(NAME)
 
 all:		$(NAME)
 
+bonus:	$(NAME_BONUS)
+
+$(NAME_BONUS):	${OBJS}
+			cd ${DIRLIB} && ${MAKE}
+			cd ${DIRMLX} && ${MAKE}
+			${CC} -o ${NAME_BONUS} -I${DIRINC} -I${DIRMLX} ${OBJS} -L${DIRLIB} -L${DIRMLX} ${CFLAGS}
+
 clean:
 			${RM} ${OBJS}
 
 fclean:		clean
-			${RM} $(NAME)
+			${RM} $(NAME) $(NAME_BONUS)
 
 ffclean:	fclean
 			cd ${DIRLIB} && ${MAKE} fclean

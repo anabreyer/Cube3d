@@ -6,7 +6,7 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:59:15 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 19:21:01 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:30:34 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ int	set_status(char dir)
 		return (WE);
 	else if (dir == 'E')
 		return (EA);
+	return (-1);
 }
 
 void	check_mapsyntax(t_map *map, t_player *player, char *line, t_cub *cub)
@@ -63,7 +64,7 @@ int	file_check(t_map *map, t_player *player, char *line, t_cub *cub)
 		ret = check_path(line, cub);
 	else if (!ft_strncmp("F ", line, 2) || !ft_strncmp("C ", line, 2))
 		ret = check_color(line, line[0], cub);
-	else if (line[i] != '\0' && line[i] != '0' && line[i] != '1')
+	else if (line[i] && line[i] != ' ' && line[i] != '0' && line[i] != '1')
 		ret = 1;
 	while (ft_isspace(line[i]))
 		i++;

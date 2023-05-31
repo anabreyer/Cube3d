@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aaduan-b <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 15:23:02 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 15:27:57 by aaduan-b         ###   ########.fr       */
+/*   Updated: 2023/05/24 16:36:48 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,6 @@
 
 int	ft_put_pixel(t_image *img, unsigned int colour, int x, int y)
 {
-	char	*dest;
-
 	y += 15;
 	x += 70;
 	if (y >= WHEIGHT || x >= WWIDTH || x < 0 \

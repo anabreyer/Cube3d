@@ -6,13 +6,13 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:54:08 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 19:13:12 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:31:09 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	check_wall(t_map *map, char **m, t_cub *cub)
+int	check_wall(t_map *map, char **m)
 {
 	int	i;
 	int	j;
@@ -27,6 +27,9 @@ int	check_wall(t_map *map, char **m, t_cub *cub)
 				|| m[i][j] == 'S' || m[i][j] == 'N')
 			{
 				if (i == 0 || j == 0 || i == map->height - 1 || !m[i][j + 1])
+					return (1);
+				else if (m[i - 1][j] == '\0' || m[i + 1][j] == '\0'\
+					|| m[i][j - 1] == '\0' || m[i][j + 1] == '\0')
 					return (1);
 				else if (m[i - 1][j] == ' ' || m[i + 1][j] == ' '\
 					|| m[i][j - 1] == ' ' || m[i][j + 1] == ' ')
@@ -50,6 +53,8 @@ void	read_set_map(int fd, t_cub *cub, char **tmp)
 	while (i < cub->map.height)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			break;
 		line = replace_char(line);
 		str = (char *)malloc(sizeof(char) * (cub->map.width + 1));
 		if (!str)
@@ -74,6 +79,8 @@ void	read_til_start(int fd, t_cub *cub)
 	while (i < cub->map.start - 1)
 	{
 		line = get_next_line(fd);
+		if (!line)
+			break;
 		free(line);
 		line = NULL;
 		i++;
@@ -107,7 +114,6 @@ void	set_player_pos(t_player *player, char **map)
 void	dup_map(t_cub *cub, char *filename)
 {
 	char	**tmp;
-	int		fd;
 
 	if (cub->map.start == 0)
 		print_error("map not found", cub, NULL);
@@ -117,17 +123,20 @@ void	dup_map(t_cub *cub, char *filename)
 	tmp = (char **)malloc(sizeof(char *) * (cub->map.height + 1));
 	if (!tmp)
 		print_error("map temp malloc error", cub, NULL);
-	fd = open(filename, O_RDONLY);
-	if (fd < 0)
+	cub->fd[1] = open(filename, O_RDONLY);
+	if (cub->fd[1] < 0)
 		print_error("dup map file open error", cub, NULL);
-	read_til_start(fd, cub);
-	read_set_map(fd, cub, tmp);
+	read_til_start(cub->fd[1], cub);
+	read_set_map(cub->fd[1], cub, tmp);
+	if (!tmp[cub->map.height - 1])
+		print_error("map error", cub, NULL);
 	tmp[cub->map.height] = 0;
 	cub->map.map = tmp;
-	if (check_wall(&cub->map, cub->map.map, cub))
+	if (check_wall(&cub->map, cub->map.map))
 		print_error("map error: opened wall", cub, NULL);
 	else
 		printf("map is ready\n");
 	set_player_pos(&cub->player, cub->map.map);
-	close(fd);
+	close(cub->fd[1]);
+	cub->fd[1] = 0;
 }

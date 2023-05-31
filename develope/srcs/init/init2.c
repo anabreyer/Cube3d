@@ -6,13 +6,13 @@
 /*   By: jischoi <jischoi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/23 14:39:57 by aaduan-b          #+#    #+#             */
-/*   Updated: 2023/05/23 18:57:31 by jischoi          ###   ########.fr       */
+/*   Updated: 2023/05/24 16:32:24 by jischoi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-void	init_map(t_map *map, t_cub *cub)
+void	init_map(t_map *map)
 {
 	int	i;
 
@@ -76,6 +76,10 @@ void	init_image(t_image *img, t_cub *cub)
 
 void	init_cub(t_cub *cub)
 {
+	// cub->map.map = NULL;
+	init_map(&cub->map);
+	cub->fd[0] = 0;
+	cub->fd[1] = 0;
 	cub->mlx = NULL;
 	cub->win = NULL;
 	cub->img.img_arr = NULL;
